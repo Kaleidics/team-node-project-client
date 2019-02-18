@@ -12,7 +12,7 @@ html, body {
   font-family: spray;
   src: url(./assets/TrueLies.ttf);
 }
-/* ============================NAVBAR==============================
+/* ==============              NAVBAR          ====================
 ==================================================================== */
 .nav {
     position: fixed;
@@ -46,8 +46,9 @@ html, body {
 }
 /* ==================================================================== */
 
-/* ==============================PARALLAX BACKGROUND====================== 
+/* ================          PARALLAX BACKGROUND        ===================== 
 ============================================================================*/
+/* main pic background position control */
 .main-pic{
     position: relative;
     /* opacity: 0.7; */
@@ -61,13 +62,26 @@ html, body {
     background-image: url('./assets/pic5.jpg');
     min-height: 100vh;
 }
+/* inner div of the parallax pic */
+.pic-text {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+    font-size: 25px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
 
+/* arrow icon */
 i {
     color: #fff;
     margin-top: 30vh;
     cursor: pointer;
 }
 
+/* bouncing icon */
 i {
     animation: bounce 2s infinite;
 }
@@ -85,6 +99,9 @@ i {
 }
 /* ========================================================================= */
 
+/* =====================              SECTIONS OF TEXT                ===================
+============================================================================================ */
+/* styles for all sections */
 .section {
     display: flex;
     justify-content: center;
@@ -105,31 +122,15 @@ i {
 .dark-section-inner {
     max-width: 50%;
 }
+/* ============================================================================================ */
 
-.pic-text {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    text-align: center;
-    color: #000;
-    font-size: 25px;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-}
-
-
-.border {
-    background-color: #111;
-    color: #fff;
-    padding: 1rem;
-}
-
-
+/* ====================              MEDIA QUERIES             ========================
+============================================================================================ */
 @media(max-width:568px) {
     /* .main-pic{
         background-attachment: scroll;
     } */
-
+/* ======     makes vertical view on phones     === */
 .section {
     display: flex;
     flex-direction: column;
@@ -137,4 +138,7 @@ i {
 .dark-section-inner {
     max-width: 100%;;
 }
+/*================================================*/
+
+
 }
