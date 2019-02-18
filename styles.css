@@ -41,7 +41,7 @@ html, body {
     color: #666;
 }
 
-.navbar.li a:hover {
+.navbar li a:hover {
     border-bottom: 3px solid #444;
 }
 /* ==================================================================== */
