@@ -1,20 +1,36 @@
 'use strict'
 
 function toggleOnSignUp() {
-    $('#modalBtn').on('click', function (event) {
-        $('#simpleModal').addClass('unhide');
+    $('#signUpBtn').on('click', function(event) {
+        event.stopPropagation();
+        $('#signup-Modal').addClass('unhide');
     });
 }
 
 function toggleOffSignUp() {
-    $('.closeBtn').on('click', function (event) {
-        $('#simpleModal').removeClass('unhide');
+    $('.closeBtn').on('click', function(event) {
+        $('#signup-Modal').removeClass('unhide');
+    });
+}
+
+function toggleOnLogin() {
+    $('#loginBtn').on('click', function(event) {
+        event.stopPropagation();
+        $('#login-Modal').addClass('unhide');
+    });
+}
+
+function toggleOffLogin() {
+    $('.closeBtn').on('click', function(event) {
+        $('#login-Modal').removeClass('unhide');
     });
 }
 
 function documentReady() {
     toggleOnSignUp();
     toggleOffSignUp();
+    toggleOnLogin();
+    toggleOffLogin();
 }
 
 $(documentReady);
