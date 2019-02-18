@@ -4,13 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Eddie Chu</title>
+    <title>Node</title>
     <meta name="description" content="Eddie Chu's Web Development Portfolio">
     <link href="https://fonts.googleapis.com/css?family=Lato|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="styles.css">
-    <script src="script.js"></script>
 </head>
 
 <body>
@@ -18,7 +17,7 @@
         <ul class="navbar">
             <li><a href="#">Placeholder</a></li>
             <li><a href="#">Login</a></li>
-            <li><a href="#">Sign Up</a></li>
+            <li id="modalBtn"><a href="#">Sign Up</a></li>
         </ul>
     </header>
 
@@ -31,13 +30,23 @@
         </div>
         <section class="section section-light">
             <div>
+
+
                 <h2>About</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam perspiciatis modi maxime nihil doloribus ut, harum necessitatibus accusamus aliquam dicta ratione? In, facilis labore exercitationem enim odio vero id officiis soluta expedita. Veritatis natus aspernatur repellendus aliquid placeat possimus fugit facilis amet? At consequuntur illo dolorem quod itaque ut, rerum vitae illum tempore porro cumque quam in ipsa ipsam reprehenderit unde eligendi? Voluptatem in neque earum dolor molestias fuga esse nisi perferendis! Provident quas dolorum blanditiis, officiis tenetur tempore eius voluptas deleniti praesentium labore recusandae cupiditate ipsam porro amet beatae? Amet, excepturi. Dolor, ratione! Accusantium nulla modi corporis optio esse!</p>
+
+                <div id="simpleModal" class="modal">
+                    <div class="class modal-content">
+                        <span class="closeBtn">&times</span>
+                        <p>I am a modal</p>
+                    </div>
+                </div>
+
+
+
             </div>
         </section>
 
 
-    <footer>
         <section class="section section-dark">
             <div class="dark-section-inner">
                 <h2>Section Two</h2>
@@ -72,10 +81,32 @@
                     perspiciatis?</p>
             </div>
         </section>
+    <footer>
+        <section class="section section-dark">
+            <div class="dark-section-inner">
+                <h2>Section Two</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam et incidunt totam eveniet nesciunt
+                    dolorem vel
+                    animi similique voluptatibus! Molestiae at itaque modi exercitationem doloremque, iusto obcaecati
+                    est deserunt,
+                    quasi distinctio quos praesentium vel quod aliquam eaque amet saepe accusantium eius. Nam eveniet
+                    minus veniam
+                    inventore voluptates exercitationem blanditiis, repellendus culpa architecto. Nihil dolorum esse nam
+                    fuga sunt
+                    vel architecto assumenda fugiat delectus. Quidem laborum consequuntur, aliquid non minus consectetur
+                    autem
+                    itaque deleniti id enim, sit impedit, distinctio doloremque ratione odio commodi illum aspernatur
+                    dignissimos
+                    dolorum quam debitis perspiciatis possimus corrupti. Maxime blanditiis maiores ratione impedit
+                    cumque quia nam
+                    perspiciatis?</p>
+            </div>
+        </section>
     </footer>
 
-
-
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+<script src="script.js"></script>
 </body>
 
 </html>
