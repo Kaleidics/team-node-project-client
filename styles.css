@@ -1,0 +1,140 @@
+html, body {
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    line-height: 1.5em;
+    color: #666;
+}
+@font-face {
+  font-family: spray;
+  src: url(./assets/TrueLies.ttf);
+}
+/* ============================NAVBAR==============================
+==================================================================== */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px 0;
+    margin: 0;
+    z-index: 2;
+    background-color: #fff;
+}
+
+.navbar {
+    display: flex;
+}
+.navbar li {
+    list-style-type: none;
+    margin-right: 2rem;
+}
+.navbar li a{
+    font-size: 20px;
+    font-family: spray;
+    text-decoration: none;
+    color: #666;
+}
+
+.navbar li a:hover {
+    border-bottom: 3px solid #444;
+}
+/* ==================================================================== */
+
+/* ==============================PARALLAX BACKGROUND====================== 
+============================================================================*/
+.main-pic{
+    position: relative;
+    /* opacity: 0.7; */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.main-pic {
+    background-image: url('./assets/pic5.jpg');
+    min-height: 100vh;
+}
+
+i {
+    color: #fff;
+    margin-top: 30vh;
+    cursor: pointer;
+}
+
+i {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+/* ========================================================================= */
+
+.section {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 80px;
+}
+
+.section-light {
+    background-color: #f4f4f4;
+    color: #666;
+}
+
+.section-dark {
+    background-color: #282e34;
+    color: #ddd;
+}
+
+.dark-section-inner {
+    max-width: 50%;
+}
+
+.pic-text {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+    font-size: 25px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+
+
+.border {
+    background-color: #111;
+    color: #fff;
+    padding: 1rem;
+}
+
+
+@media(max-width:568px) {
+    /* .main-pic{
+        background-attachment: scroll;
+    } */
+
+.section {
+    display: flex;
+    flex-direction: column;
+}
+.dark-section-inner {
+    max-width: 100%;;
+}
+}
