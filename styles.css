@@ -168,18 +168,21 @@ i {
     display: flex;
     justify-content: center;
 }
-/* ======================================================================= */
-
 
 .modal-forms.login {
     margin: 20px;
 }
 
+/* fieldset of the modals */
 fieldset {
     display: flex;
     justify-content: center;
     border: none;
 }
+/* ======================================================================= */
+
+
+
 
 
 
