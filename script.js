@@ -25,7 +25,7 @@ function toggleOffLogin() {
 }
 //==========================================================//
 
-// =================  SIGN UP AJAX  ========================
+// =================  AUTH AJAX  ========================
 
 function SignUp() {
     const url = 'http://localhost:8080/api/users/register';
@@ -47,23 +47,61 @@ function SignUp() {
     })
     .then(res => res.json())
     .then(response => {
-        console.log('success', response);
+        console.log('signup success', response);
         //if response success trigger login modal
         if (response.status === 201){
             $('#signup-Modal').removeClass('unhide');
             $('#login-Modal').addClass('unhide');
         }
-    });
+    })
+    .catch(err => console.log(err));
+}
+
+function login() {
+    const url = 'http://localhost:8080/api/auth/login';
+
+    const username = $('#usernameL').val();
+    const password = $('#passwordL').val();
+
+    const loginCreds = {
+        username: username,
+        password: password
+    }
+
+    return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(loginCreds),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res => res.json())
+    .then(response => {
+        console.log('login success', response);
+        const {authToken} = response;
+        console.log(authToken);
+        //store jwt
+        localStorage.setItem('localtoken', authToken);
+    })
+    .catch(err => console.log(err));
 }
 // =========================================================//
 
-//================== FORM LISTENERS =======================
+//================== AUTH FORM LISTENERS =======================
 
 function submitSignUp() {
     $('#signup-submit').on('submit', (event) => {
         event.preventDefault();
         console.log('clicked');
         SignUp();
+    });
+}
+
+function submitLogin() {
+    $('#login-submit').on('submit', (event) => {
+        event.preventDefault();
+        console.log('clicked');
+        login();
     });
 }
 //==========================================================//
@@ -81,8 +119,9 @@ function documentReady() {
     toggleOffSignUp();
     toggleOnLogin();
     toggleOffLogin();
-//FORM LISTENERS
+//AUTH FORM LISTENERS
     submitSignUp();
+    submitLogin();
 }
 
 $(documentReady);
