@@ -114,6 +114,7 @@ function submitLogin() {
 //==========================================================//
 
 // ==================  SIMULATE STATES =====================
+//loads different navbars depending if jwt is in local storage
 function pseudoState() {
     console.log('using pseudostate');
     $(window).on('load', (event) => {
