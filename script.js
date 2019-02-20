@@ -83,6 +83,13 @@ function login() {
         //store jwt
         localStorage.setItem('localtoken', authToken);
     })
+    .then(response => {
+        if (localStorage.getItem('localtoken')){
+            $('#login-Modal').removeClass('unhide');
+            $('#post-nav').removeClass('hidden');
+            $('#pre-nav').addClass('hidden');
+        }
+    })
     .catch(err => console.log(err));
 }
 // =========================================================//
@@ -106,14 +113,36 @@ function submitLogin() {
 }
 //==========================================================//
 
+// ==================  SIMULATE STATES =====================
+function pseudoState() {
+    console.log('using pseudostate');
+    $(window).on('load', (event) => {
+        if (localStorage.getItem('localtoken')) {
+            console.log('triggered');
+            $('#post-nav').toggleClass('hidden');
+            $('#pre-nav').toggleClass('hidden');
+        }
+    })
 
+}
 
-
+function logout() {
+    $('#logoutBtn').on('click', (event) => {
+        console.log('logged out');
+        localStorage.removeItem('localtoken');
+        $('#post-nav').toggleClass('hidden');
+        $('#pre-nav').toggleClass('hidden');
+    })
+}
+// =========================================================//
 
 
 
 
 function documentReady() {
+//SIMULATE STATES
+    pseudoState();
+    logout();
 //MODAL CONTROLS
     toggleOnSignUp();
     toggleOffSignUp();
