@@ -146,10 +146,19 @@ function logout() {
 }
 // =========================================================//
 
+//==================== SCROLL CONTROLS =====================//
 
-
+function registerArrow() {
+    $(".fas").on("click", () => {
+        $("html").animate({
+            scrollTop: 376
+        }, 500)
+    });
+}
 
 function documentReady() {
+//SCROLL CONTROLS
+    registerArrow();
 //SIMULATE STATES
     pseudoState();
     logout();

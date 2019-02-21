@@ -91,7 +91,7 @@ i {
 
 /* bouncing icon */
 i {
-    animation: bounce 2s infinite;
+    animation: bounce 5s infinite;
 }
 
 @keyframes bounce {
