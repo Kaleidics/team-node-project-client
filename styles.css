@@ -67,7 +67,7 @@ html, body {
 }
 
 .main-pic {
-    background-image: url('./assets/pic5.jpg');
+    background-image: url('./assets/pic23.jpg');
     min-height: 100vh;
 }
 /* inner div of the parallax pic */
@@ -206,7 +206,6 @@ fieldset {
 
 
 
-
 /* ============================================================================================ */
 
 /* ====================              MEDIA QUERIES             ========================
@@ -215,6 +214,9 @@ fieldset {
     /* .main-pic{
         background-attachment: scroll;
     } */
+
+
+
 /* ======     makes vertical view on phones     === */
 .section {
     display: flex;
