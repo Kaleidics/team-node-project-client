@@ -12,8 +12,7 @@ html, body {
   font-family: spray;
   src: url(./assets/TrueLies.ttf);
 }
-/* ==============              NAVBAR          ====================
-==================================================================== */
+/* =========================  NAVBAR  ============================= */
 .nav {
     position: fixed;
     top: 0;
@@ -23,7 +22,7 @@ html, body {
     justify-content: flex-start;
     padding: 5px 0;
     margin: 0;
-    z-index: 2;
+    z-index: 100;
     background-color: #fff;
 }
 
@@ -55,10 +54,9 @@ html, body {
 .unhidden {
     display: block;
 }
-/* ==================================================================== */
+/*//////////////////////////////////////////////////////////////*/
 
-/* ================  PARALLAX BACKGROUND  ===================== 
-===============================================================*/
+/* ================  PARALLAX BACKGROUND  =====================*/
 /* main pic background position control */
 .main-pic{
     position: relative;
@@ -70,7 +68,7 @@ html, body {
 }
 
 .main-pic {
-    background-image: url('./assets/pic23.1.jpg');
+    /* background-image: url('./assets/pic23.1.jpg'); */
     min-height: 100vh;
 }
 /* inner div of the parallax pic */
@@ -108,10 +106,9 @@ i {
     transform: translateY(-15px);
   }
 }
-/* ============================================================= */
+/*///////////////////////////////////////////////////////////////////// */
 
-/* =====================  SECTIONS OF TEXT  ===================
-=============================================================== */
+/* =====================  LANDING SECTIONS OF TEXT  =================== */
 /* styles for all sections */
 .section {
     display: flex;
@@ -133,10 +130,9 @@ i {
 .dark-section-inner {
     max-width: 50%;
 }
-/*============================================================= */
+/*//////////////////////////////////////////////////////////////*/
 
-/* ========================  MODAL  ========================= 
-==============================================================*/
+/* ========================  MODAL  ===========================*/
 /* the opacity background */
 .modal {
     display: none;
@@ -192,15 +188,23 @@ fieldset {
     justify-content: center;
     border: none;
 }
-/* ==================================================================== */
+/* /////////////////////////////////////////////////////////////////// */
 
+/* =======================  LOGGED IN VIEWS  ========================= */
+/* Create a Game view */
+.viewEnabled {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 
+.form-container {
+    display: flex;
+    justify-content: center;
+}
 
-
-#post-container {
-    background: black;
-    position: absolute;
-    z-index: -10;
+.createTeam-form {
+    background: wheat;
 }
 
 
@@ -208,15 +212,22 @@ fieldset {
 
 
 
+/*//////////////////////////////////////////////////////////////////// */
 
 
 
 
 
-/* ============================================================================================ */
 
-/* ====================              MEDIA QUERIES             ========================
-============================================================================================ */
+
+
+
+
+
+
+
+
+/* ==========================  MEDIA QUERIES  ========================== */
 @media(max-width:568px) {
     /* .main-pic{
         background-attachment: scroll;
@@ -224,7 +235,7 @@ fieldset {
 
 
 
-/* ======     makes vertical view on phones     === */
+/* ===========  makes vertical view on phones  ========== */
 .section {
     display: flex;
     flex-direction: column;
@@ -232,7 +243,7 @@ fieldset {
 .dark-section-inner {
     max-width: 100%;;
 }
-/*================================================*/
+/*////////////////////////////////////////////////////////*/
 
 
 }

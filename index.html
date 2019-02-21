@@ -25,7 +25,7 @@
         <ul class="navbar">
             <li><a class='logo' href="#">ALLY-OOP</a></li>
             <li><a href="#">My Profile</a></li>
-            <li><a href="#">Create a Game</a></li>
+            <li id="createBtn"><a href="#">Create a Game</a></li>
             <li><a href="#">Join a Game</a></li>
             <li id="logoutBtn"><a href="#">Logout</a></li>
         </ul>
@@ -63,15 +63,32 @@
     </section>
 
     <main>
+        <!-- INITIAL LANDING PAGE -->
         <div id="pre-container" class="main-pic">
             <div class="pic-text first">
                 <div class="name-div"></div>
                 <a href="#"><i class="fas fa-angle-double-down"></i></a>
             </div>
         </div>
-        <div id='post-container' class="main-pic">
-        
+        <!-- CREATE A POST VIEW -->
+        <div id='post-container' class="main-pic hidden">
+            <div class="form-container">
+                <form class="createTeam-form" role="form">
+                    <fieldset>
+                        <legend>Create a Game</legend>
+                        <input type="text" name="Title" placeholder="Title">
+                        <select name="Rules" id="">
+                            <option value="Half-Court">Half-Court</option>
+                            <option value="Full-Court">Full-Court</option>
+                        </select>
+                        <input type="number" name="PlayerLimit" min="1" max="99">
+                        <input type="text" name="Description" id="">
+                        <input type="submit">
+                    </fieldset>
+                </form>
+            </div>
         </div>
+
         <section class="section section-light">
             <div>
 

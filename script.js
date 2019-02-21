@@ -102,6 +102,19 @@ function login() {
     .catch(err => console.log(err));
 }
 // =========================================================//
+//==================  POST EVENT LISTENERS  ==================
+function registerCreate() {
+    $('#createBtn').on('click', (event) => {
+        console.log('create view active');
+        $('#pre-container').addClass('hidden');
+        $('#post-container').addClass('viewEnabled');
+    });
+}
+
+
+
+
+//============================================================//
 //==================  TEAM POSTS AJAX  =========================
 
 function createTeam() {
@@ -157,8 +170,9 @@ function logout() {
     $('#logoutBtn').on('click', (event) => {
         console.log('logged out');
         localStorage.removeItem('localtoken');
-        $('#post-nav').toggleClass('hidden');
-        $('#pre-nav').toggleClass('hidden');
+        location.reload();
+        // $('#post-nav').toggleClass('hidden');
+        // $('#pre-nav').toggleClass('hidden');
     })
 }
 // =========================================================//
@@ -192,6 +206,8 @@ function documentReady() {
 //AUTH FORM LISTENERS
     submitSignUp();
     submitLogin();
+//LOGGED IN NAV CONTROLS
+    registerCreate();
 }
 
 $(documentReady);
