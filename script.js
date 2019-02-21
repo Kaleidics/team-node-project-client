@@ -45,14 +45,23 @@ function SignUp() {
             'Content-Type': 'application/json'
         }
     })
-    .then(res => res.json())
     .then(response => {
-        console.log('signup success', response);
+        console.log('signup triggered');
         //if response success trigger login modal
         if (response.status === 201){
             $('#signup-Modal').removeClass('unhide');
             $('#login-Modal').addClass('unhide');
         }
+        //if fail any signup requirements trigger error message
+        else {
+            return response.json()
+            .then(response => {
+                console.log(response);
+                alert(`${response.location} ${response.message}`);
+            })
+            .catch(err => console.log(err));
+        }
+        return response.json();
     })
     .catch(err => console.log(err));
 }
