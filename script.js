@@ -171,6 +171,9 @@ function registerArrow() {
             scrollTop: 2000
         }, 500)
     });
+    $(window).on('scroll', () => {
+        $('.fas').addClass('hidden');
+    });
 }
 
 // =========================================================//

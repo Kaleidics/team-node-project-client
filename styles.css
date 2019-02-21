@@ -70,7 +70,7 @@ html, body {
 }
 
 .main-pic {
-    background-image: url('./assets/pic23.jpg');
+    background-image: url('./assets/pic23.1.jpg');
     min-height: 100vh;
 }
 /* inner div of the parallax pic */
@@ -197,7 +197,11 @@ fieldset {
 
 
 
-
+#post-container {
+    background: black;
+    position: absolute;
+    z-index: -10;
+}
 
 
 
