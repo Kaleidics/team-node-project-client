@@ -163,15 +163,17 @@ function logout() {
 }
 // =========================================================//
 
-//==================== SCROLL CONTROLS =====================//
+//==================== SCROLL CONTROLS =====================
 
 function registerArrow() {
     $(".fas").on("click", () => {
         $("html").animate({
-            scrollTop: 376
+            scrollTop: 2000
         }, 500)
     });
 }
+
+// =========================================================//
 
 function documentReady() {
 //SCROLL CONTROLS
