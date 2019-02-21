@@ -34,9 +34,12 @@ html, body {
     list-style-type: none;
     margin-right: 2rem;
 }
+.logo {
+    font-family: spray;
+}
 .navbar li a{
     font-size: 20px;
-    font-family: spray;
+    /* font-family: spray; */
     text-decoration: none;
     color: #666;
 }

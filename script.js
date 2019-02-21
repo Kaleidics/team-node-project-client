@@ -102,7 +102,24 @@ function login() {
     .catch(err => console.log(err));
 }
 // =========================================================//
+//==================  TEAM POSTS AJAX  =========================
 
+function createTeam() {
+    const url = 'http://localhost:8080/api/teams/'
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//==============================================================//
 //================== AUTH FORM LISTENERS =======================
 
 function submitSignUp() {
