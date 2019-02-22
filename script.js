@@ -3,6 +3,7 @@
 function toggleOnSignUp() {
     $('#signUpBtn').on('click', function(event) {
         $('#signup-Modal').addClass('unhide');
+        $('#login-Modal').removeClass('unhide');
     });
 }
 
@@ -15,6 +16,7 @@ function toggleOffSignUp() {
 function toggleOnLogin() {
     $('#loginBtn').on('click', function(event) {
         $('#login-Modal').addClass('unhide');
+        $('#signup-Modal').removeClass('unhide');
     });
 }
 
