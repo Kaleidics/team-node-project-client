@@ -106,13 +106,13 @@ function login() {
 }
 // =========================================================//
 //==================  POST EVENT LISTENERS  ==================
-function registerCreate() {
-    $('#createBtn').on('click', (event) => {
-        console.log('create view active');
-        $('#pre-container').addClass('hidden');
-        $('#post-container').addClass('viewEnabled');
-    });
-}
+// function registerCreate() {
+//     $('#createBtn').on('click', (event) => {
+//         console.log('create view active');
+//         $('#pre-container').addClass('hidden');
+//         $('#post-container').addClass('viewEnabled');
+//     });
+// }
 
 
 
@@ -166,6 +166,7 @@ function pseudoState() {
             $('#post-nav').addClass('unhidden');
             $('#pre-nav').addClass('hidden');
         }
+
     // })
 
 }

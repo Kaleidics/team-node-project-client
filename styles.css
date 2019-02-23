@@ -44,7 +44,7 @@ html, body {
     font-weight: 600;
 }
 
-.navbar li a:hover {
+.unique-1:hover {
     border-bottom: 3px solid #444;
 }
 
@@ -218,7 +218,10 @@ fieldset {
 
 
 
+.unique-0 {
+    border-bottom: 3px solid #444;
 
+}
 
 
 .name-div {
@@ -247,7 +250,11 @@ fieldset {
     background: rgba(0 ,0 ,0, 0.5);
 }
 
-
+#post-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 /* ==========================  MEDIA QUERIES  ========================== */
