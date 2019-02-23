@@ -99,6 +99,7 @@ function login() {
             $('#login-Modal').removeClass('unhide');
             $('#post-nav').removeClass('hidden');
             $('#pre-nav').addClass('hidden');
+            console.log('logged in');
         }
     })
     .catch(err => console.log(err));
@@ -158,13 +159,14 @@ function submitLogin() {
 //loads different navbars depending if jwt is in local storage
 function pseudoState() {
     console.log('using pseudostate');
-    $(window).on('load', (event) => {
+    // $(window).on('load', (event) => {
+        console.log('level 1 trigger');
         if (localStorage.getItem('localtoken')) {
             console.log('triggered');
-            $('#post-nav').toggleClass('hidden');
-            $('#pre-nav').toggleClass('hidden');
+            $('#post-nav').addClass('unhidden');
+            $('#pre-nav').addClass('hidden');
         }
-    })
+    // })
 
 }
 
@@ -195,11 +197,12 @@ function registerArrow() {
 // =========================================================//
 
 function documentReady() {
-//SCROLL CONTROLS
-    registerArrow();
+
 //SIMULATE STATES
     pseudoState();
     logout();
+    //SCROLL CONTROLS
+    registerArrow();
 //MODAL CONTROLS
     toggleOnSignUp();
     toggleOffSignUp();

@@ -69,8 +69,9 @@ html, body {
 }
 
 .main-pic {
-    background-image: url('./assets/pic11.jpg');
-    min-height: 100vh;
+    background-color: grey;
+    /* background-image: url('./assets/pic11.jpg'); */
+    min-height: 60vh;
 }
 /* inner div of the parallax pic */
 .pic-text {
