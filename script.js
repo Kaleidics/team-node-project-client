@@ -1,5 +1,6 @@
 'use strict'
 const sport = 'basketball';
+
 // ============== MODAL CONTROLS  =========================
 function toggleOnSignUp() {
     $('#signUpBtn').on('click', function(event) {
@@ -117,6 +118,7 @@ function registerCreate() {
         }
         else {
             console.log('logged in, attempting to post server');
+            createTeam();
         }
     });
 }
@@ -127,36 +129,41 @@ function registerCreate() {
 //============================================================//
 //==================  TEAM POSTS AJAX  =========================
 
-// function createTeam() {
-//     const url = 'http://localhost:8080/api/teams/';
+function createTeam() {
+    const url = 'http://localhost:8080/api/teams/';
 
-//     const localtoken = localStorage.setItem('localtoken', authToken);
-//     const title = $('#titleCreate').val();
-//     const membersLimit = $('#playerLimitCreate').val();
-//     const description = $('#descriptionCreate').val();
-//     const lat = $('#latCreate').val();
-//     const long = $('#longCreate').val();
+    const localtoken = localStorage.getItem('localtoken');
+    const title = $('#titleCreate').val();
+    const membersLimit = $('#playerLimitCreate').val();
+    const description = $('#descriptionCreate').val();
+    const lat = $('#latCreate').val();
+    const long = $('#longCreate').val();
 
-//     const newPost = {
-//         sport: sport,
-//         title: title,
-//         membersLimit: membersLimit,
-//         description: description,
-//         location: {
-//             lat: lat,
-//             long: long 
-//         }
-//     }
+    const newPost = {
+        sport: sport,
+        title: title,
+        membersLimit: membersLimit,
+        description: description,
+        location: {
+            lat: lat,
+            long: long 
+        }
+    }
 
-//     return fetch(url, {
-//         method: 'POST',
-//         body: JSON.stringify(newPost),
-//         headers: {
-//             'Content-Type': 'application/json',
-//             Authorization: `Bearer ${localtoken}`
-//         }
-//     })
-// }
+    return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(newPost),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localtoken}`
+        }
+    })
+    .then(res => res.json())
+    .then(response => {
+        console.log(response);
+    })
+    .catch(err => console.log(err));
+}
 
 
 
