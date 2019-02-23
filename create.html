@@ -74,13 +74,20 @@
                 <form class="createTeam-form" role="form">
                     <fieldset>
                         <legend>Create a Game</legend>
-                        <input type="text" name="Title" placeholder="Title">
+                        <label for="Title">Title</label>
+                        <input type="text" name="Title" placeholder="Type here">
+                        <label for="Rules">Rules</label>
                         <select name="Rules" id="">
                             <option value="Half-Court">Half-Court</option>
                             <option value="Full-Court">Full-Court</option>
                         </select>
-                        <input type="number" name="PlayerLimit" min="1" max="99">
-                        <input type="text" name="Description" id="">
+                        <label for="PlayerLimit">Player Limit</label>
+                        <input type="number" name="PlayerLimit" placeholder="4" min="1" max="99">
+                        <label for="Description">Give us some details</label>
+                        <input type="text" name="Description" placeholder="Type here" id="create-des">
+                        <label for="">Hard coding location until gmaps integration</label>
+                        <input type="text" name="lat" placeholder="lat" id="">
+                        <input type="text" name="long" placeholder="long" id="">
                         <input type="submit">
                     </fieldset>
                 </form>

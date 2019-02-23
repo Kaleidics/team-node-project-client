@@ -55,6 +55,10 @@ html, body {
 .unhidden {
     display: block;
 }
+.unique-0 {
+    border-bottom: 3px solid #444;
+
+}
 /*//////////////////////////////////////////////////////////////*/
 
 /* ================  PARALLAX BACKGROUND  =====================*/
@@ -70,7 +74,7 @@ html, body {
 
 .main-pic {
     background-color: grey;
-    /* background-image: url('./assets/pic11.jpg'); */
+    background-image: url('./assets/pic30.jpg');
     min-height: 60vh;
 }
 /* inner div of the parallax pic */
@@ -107,6 +111,30 @@ i {
   60% {
     transform: translateY(-20px);
   }
+}
+
+.tagline {
+    letter-spacing: 3px;
+    padding-left: 20px;
+    max-width: 25%;
+    text-align: initial;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: white;
+    background: rgba(0 ,0 ,0, 0.5);
+}
+.name-div {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 2vw;
+    font-family: spray;
+    font-size: 1.25em;
+    color: #111;
+    max-width: 25%;
+    border-bottom: 5px solid #111;
+    margin: 20px;
+    font-weight: bold;
 }
 /*///////////////////////////////////////////////////////////////////// */
 
@@ -209,7 +237,11 @@ fieldset {
     background: wheat;
 }
 
-
+#post-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
@@ -218,43 +250,15 @@ fieldset {
 
 
 
-.unique-0 {
-    border-bottom: 3px solid #444;
-
-}
 
 
-.name-div {
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 2vw;
-    font-family: spray;
-    font-size: 1.25em;
-    color: #111;
-    max-width: 25%;
-    border-bottom: 5px solid #111;
-    margin: 20px;
-    font-weight: bold;
-}
 
 
-.tagline {
-    letter-spacing: 3px;
-    padding-left: 20px;
-    max-width: 25%;
-    text-align: initial;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    color: white;
-    background: rgba(0 ,0 ,0, 0.5);
-}
 
-#post-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
+
+
+
 
 
 /* ==========================  MEDIA QUERIES  ========================== */

@@ -213,7 +213,7 @@ function documentReady() {
     submitSignUp();
     submitLogin();
 //LOGGED IN NAV CONTROLS
-    registerCreate();
+    // registerCreate();
 }
 
 $(documentReady);
