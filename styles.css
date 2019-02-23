@@ -248,6 +248,29 @@ fieldset {
 
 /*//////////////////////////////////////////////////////////////////// */
 
+/* =======================  FIND GAME VIEWS  ========================= */
+/* container of individual posts */
+#view-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.post-item {
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    min-width: 5%;
+    max-width: 25%;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+
+/*//////////////////////////////////////////////////////////////////// */
+
 
 
 

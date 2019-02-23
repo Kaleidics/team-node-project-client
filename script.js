@@ -107,7 +107,8 @@ function login() {
     .catch(err => console.log(err));
 }
 // =========================================================//
-//==================  POST EVENT LISTENERS  ==================
+//================== AJAX EVENT LISTENERS  ==================
+//for making a new post the form button
 function registerCreate() {
     $('.createTeamForm').on('submit', (event) => {
         event.preventDefault();
@@ -123,12 +124,17 @@ function registerCreate() {
     });
 }
 
+function registerFind() {
+    $('#findBtn').on('click', (event) => {
+        viewPosts();
+    });
+}
 
 
 
 //============================================================//
-//==================  TEAM POSTS AJAX  =========================
-
+//==================  TEAM ROUTES AJAX  =========================
+//new post
 function createTeam() {
     const url = 'http://localhost:8080/api/teams/';
 
@@ -165,7 +171,18 @@ function createTeam() {
     .catch(err => console.log(err));
 }
 
+function viewPosts() {
+    const url = 'http://localhost:8080/api/teams/';
 
+    return fetch(url)
+    .then(res => res.json())
+    .then(response => {
+        console.log('find triggered');
+        console.log(response);
+        populatePosts(response);
+    })
+    .catch(err => console.log(err));
+}
 
 
 
@@ -238,8 +255,36 @@ function registerArrow() {
 
 // =========================================================//
 
-function documentReady() {
+//==================== POPULATE FIND VIEW =====================
 
+function populatePosts(arr) {
+    let items = ``;
+
+    for (let i = 0; i < arr.length; i++) {
+        const { title, sport, members, membersLimit, description } = arr[i];
+        const { lat, long } = arr[i].location;
+
+        items = items.concat(`
+            <div class="post-item">
+                <div class="post-item-list">
+                    <ul>
+                        <li>${title}</li>
+                        <li>${sport}</li>
+                        <li>${membersLimit}</li>
+                        <li>${members}</li>
+                        <li><p>${description}</p></li>
+                        <li>${lat},${long}</li>
+                    </ul>
+                </div>
+            </div>
+        `);
+    }
+    $('#view-container').html(items);
+}
+
+// =========================================================//
+
+function documentReady() {
 //SIMULATE STATES
     pseudoState();
     logout();
@@ -255,6 +300,7 @@ function documentReady() {
     submitLogin();
 //MAKE POST FOR CREATE A POST
     registerCreate();
+    registerFind();
 }
 
 $(documentReady);

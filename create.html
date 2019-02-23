@@ -25,8 +25,8 @@
         <ul class="navbar">
             <li><a class="logo" href="./index.html">APP NAME CREATE</a></li>
             <li><a class="unique-1" href="#">My Profile</a></li>
-            <li id="createBtn"><a class="unique-0" href="#">Create a Game</a></li>
-            <li><a class="unique-1" href="#">Find a Game</a></li>
+            <li id="createBtn"><a class="unique-0" href="./create.html">Create a Game</a></li>
+            <li><a id="findBtn" class="unique-1" href="./find.html">Find a Game</a></li>
             <li id="logoutBtn"><a class="unique-1" href="./index.html">Logout</a></li>
         </ul>
     </header>
@@ -86,8 +86,8 @@
                         <label for="Description">Give us some details</label>
                         <input id="descriptionCreate" type="text" name="Description" placeholder="Type here" id="create-des" required>
                         <label for="">Hard coding location until gmaps integration</label>
-                        <input id="latCreate" type="number" name="lat" placeholder="lat" id="" required>
-                        <input id="longCreate" type="number" name="long" placeholder="long" id="" required>
+                        <input id="latCreate" type="number" name="lat" placeholder="lat" id="" step="0.0001" required>
+                        <input id="longCreate" type="number" name="long" placeholder="long" id="" step="0.0001" required>
                         <input type="submit">
                     </fieldset>
                 </form>
