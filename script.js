@@ -1,4 +1,5 @@
 'use strict'
+const sport = 'basketball';
 // ============== MODAL CONTROLS  =========================
 function toggleOnSignUp() {
     $('#signUpBtn').on('click', function(event) {
@@ -106,13 +107,19 @@ function login() {
 }
 // =========================================================//
 //==================  POST EVENT LISTENERS  ==================
-// function registerCreate() {
-//     $('#createBtn').on('click', (event) => {
-//         console.log('create view active');
-//         $('#pre-container').addClass('hidden');
-//         $('#post-container').addClass('viewEnabled');
-//     });
-// }
+function registerCreate() {
+    $('.createTeamForm').on('submit', (event) => {
+        event.preventDefault();
+        console.log('attempted the post request');
+        if(localStorage.getItem('localtoken') === null) {
+            alert('Login to make a post!');
+            return;
+        }
+        else {
+            console.log('logged in, attempting to post server');
+        }
+    });
+}
 
 
 
@@ -120,9 +127,36 @@ function login() {
 //============================================================//
 //==================  TEAM POSTS AJAX  =========================
 
-function createTeam() {
-    const url = 'http://localhost:8080/api/teams/'
-}
+// function createTeam() {
+//     const url = 'http://localhost:8080/api/teams/';
+
+//     const localtoken = localStorage.setItem('localtoken', authToken);
+//     const title = $('#titleCreate').val();
+//     const membersLimit = $('#playerLimitCreate').val();
+//     const description = $('#descriptionCreate').val();
+//     const lat = $('#latCreate').val();
+//     const long = $('#longCreate').val();
+
+//     const newPost = {
+//         sport: sport,
+//         title: title,
+//         membersLimit: membersLimit,
+//         description: description,
+//         location: {
+//             lat: lat,
+//             long: long 
+//         }
+//     }
+
+//     return fetch(url, {
+//         method: 'POST',
+//         body: JSON.stringify(newPost),
+//         headers: {
+//             'Content-Type': 'application/json',
+//             Authorization: `Bearer ${localtoken}`
+//         }
+//     })
+// }
 
 
 
@@ -212,8 +246,8 @@ function documentReady() {
 //AUTH FORM LISTENERS
     submitSignUp();
     submitLogin();
-//LOGGED IN NAV CONTROLS
-    // registerCreate();
+//MAKE POST FOR CREATE A POST
+    registerCreate();
 }
 
 $(documentReady);
