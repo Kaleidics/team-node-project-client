@@ -213,12 +213,26 @@ function viewProfile() {
     .catch(err => console.log(err));
 }
 
-
-
-
-
-
-
+function viewSinglePost(postId) {
+    const base = 'http://localhost:8080/api/teams/post/';
+    const localtoken = localStorage.getItem('localtoken');
+    const url = base + postId;
+    console.log(url);
+    return fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localtoken}`
+        }
+    })
+    .then(res => res.json())
+    .then(response => {
+        console.log('find triggered');
+        console.log(response);
+        modalizePost(response);
+    })
+    .catch(err => console.log(err));
+}
 
 
 
@@ -299,10 +313,10 @@ function populateProfile(arr) {
                 <div class="post-item-list">
                     <ul>
                         <li><h4>${title}<h4></li>
-                        <li>${sport}</li>
-                        <li>${membersLimit}</li>
-                        <li>${members}</li>
-                        <li><p>${description}</p></li>
+                        <li>Sport: ${sport}</li>
+                        <li>Max players: ${membersLimit}</li>
+                        <li>Current players: ${members}</li>
+                        <li> Description: <p>${description}</p></li>
                         <li>${lat},${long}</li>
                     </ul>
                 </div>
@@ -324,10 +338,10 @@ function populatePosts(arr) {
                 <div class="post-item-list">
                     <ul>
                         <li><h4>${title}<h4></li>
-                        <li>${sport}</li>
-                        <li>${membersLimit}</li>
-                        <li>${members}</li>
-                        <li><p>${description}</p></li>
+                        <li>Sport: ${sport}</li>
+                        <li>Max players: ${membersLimit}</li>
+                        <li>Current players: ${members}</li>
+                        <li>Description: <p>${description}</p></li>
                         <li>${lat},${long}</li>
                     </ul>
                 </div>
@@ -339,12 +353,48 @@ function populatePosts(arr) {
 
 }
 
+function modalizePost(arr) {
+    const { title, sport, members, membersLimit, description, _id } = arr;
+    const { lat, long } = arr.location;
 
+    $('#post-container').append(`
+    <div id="signup-Modal" class="modal unhide">
+            <div class="class modal-content">
+                <a href="#" class="closeBtn">&times</a>
+                <div id="${_id}">
+                <div>
+                    <ul>
+                        <li><h4>${title}<h4></li>
+                        <li>Sport: ${sport}</li>
+                        <li>Max players: ${membersLimit}</li>
+                        <li>Current players: ${members}</li>
+                        <li>Description: <p>${description}</p></li>
+                        <li>${lat},${long}</li>
+                        <li><button class="update">Update</button></li>
+                        <li><button class="delete">Delete</button></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+    `)
+}
+function profileCloseBtn() {
+    $('#post-container').on('click', '.closeBtn', (event) => {
+        console.log('clicked');
+        $(this).closest('#signup-Modal').remove();
+    });
+}
 // =========================================================//
 
-//==================== UPDATE and DELTE =====================
+//==================== UPDATE and DELETE =====================
 
-
+function popPost() {
+    $('#ownPosts').on('click', '.post-item', (event) => {
+        const singlePost = event.target.id;
+        viewSinglePost(singlePost);
+    });
+}
 
 // =========================================================//
 
@@ -366,6 +416,10 @@ function documentReady() {
     registerCreate();
     registerFind();
     registerProfile();
+//UPDATE DELETE
+    popPost();
+//profile controls
+profileCloseBtn();
 }
 
 $(documentReady);
