@@ -335,8 +335,7 @@ function populatePosts(arr) {
 
         items = items.concat(`
             <div id="${_id}" class="post-item">
-                <div class="post-item-list">
-                    <ul>
+                    <ul class="post-item-list">
                         <li><h4>${title}<h4></li>
                         <li>Sport: ${sport}</li>
                         <li>Max players: ${membersLimit}</li>
@@ -344,13 +343,11 @@ function populatePosts(arr) {
                         <li>Description: <p>${description}</p></li>
                         <li>${lat},${long}</li>
                     </ul>
-                </div>
             </div>
         `);
         console.log('before initMap', lat, long, _id);
     }
     $('#view-container').html(items);
-
 }
 
 function modalizePost(arr) {
@@ -381,8 +378,8 @@ function modalizePost(arr) {
 }
 function profileCloseBtn() {
     $('#post-container').on('click', '.closeBtn', (event) => {
-        console.log('clicked');
-        $(this).closest('#signup-Modal').remove();
+        console.log('clicked profile close');
+        $(event.target).closest('#signup-Modal').remove();
     });
 }
 // =========================================================//
@@ -391,12 +388,25 @@ function profileCloseBtn() {
 
 function popPost() {
     $('#ownPosts').on('click', '.post-item', (event) => {
-        const singlePost = event.target.id;
+        const singlePost = $(event.target).closest('div.post-item').attr('id');
         viewSinglePost(singlePost);
     });
 }
 
 // =========================================================//
+
+function navBtn() {
+    $('#profileBtn').on('click', (event) => {
+        viewProfile();
+        setTimeout(function () {
+            window.location.href = './profile.html';
+        }, 3000)
+    })
+}
+
+
+
+
 
 function documentReady() {
 //SIMULATE STATES
@@ -420,6 +430,7 @@ function documentReady() {
     popPost();
 //profile controls
 profileCloseBtn();
+// navBtn();
 }
 
 $(documentReady);
