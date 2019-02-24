@@ -132,11 +132,11 @@ function registerFind() {
     });
 }
 
-// function registerProfile() {
-//     $('#profileBtn').on('click', (event) => {
-//         viewProfile();
-//     })
-// }
+function registerProfile() {
+    $('#profileBtn').on('click', (event) => {
+        viewProfile();
+    })
+}
 
 
 //============================================================//
@@ -192,13 +192,11 @@ function viewPosts() {
 }
 
 function viewProfile() {
-    console.log('trigged viewprofile');
     const base = 'http://localhost:8080/api/teams/';
     const localtoken = localStorage.getItem('localtoken');
     const currentUserId = localStorage.getItem('currentUser');
     const url = base + currentUserId;
     console.log(url);
-
     return fetch(url, {
         method: 'GET',
         headers: {
@@ -297,25 +295,23 @@ function populateProfile(arr) {
         const { lat, long } = arr[i].location;
 
         items = items.concat(`
-            <div class="post-item">
+            <div id="${_id}" class="post-item">
                 <div class="post-item-list">
                     <ul>
-                        <li>${title}</li>
+                        <li><h4>${title}<h4></li>
                         <li>${sport}</li>
                         <li>${membersLimit}</li>
                         <li>${members}</li>
                         <li><p>${description}</p></li>
-                        <li id="${_id}">${lat},${long}</li>
+                        <li>${lat},${long}</li>
                     </ul>
                 </div>
             </div>
         `);
-        console.log('before initMap', lat, long, _id);
-        // initMap(lat, long, _id);
     }
     $('#ownPosts').append(items);
-
 }
+
 function populatePosts(arr) {
     let items = ``;
 
@@ -324,15 +320,15 @@ function populatePosts(arr) {
         const { lat, long } = arr[i].location;
 
         items = items.concat(`
-            <div class="post-item">
+            <div id="${_id}" class="post-item">
                 <div class="post-item-list">
                     <ul>
-                        <li>${title}</li>
+                        <li><h4>${title}<h4></li>
                         <li>${sport}</li>
                         <li>${membersLimit}</li>
                         <li>${members}</li>
                         <li><p>${description}</p></li>
-                        <li id="${_id}">${lat},${long}</li>
+                        <li>${lat},${long}</li>
                     </ul>
                 </div>
             </div>
@@ -346,21 +342,9 @@ function populatePosts(arr) {
 
 // =========================================================//
 
-//==================== LISTENERS FOR NAVIGATION =====================
+//==================== UPDATE and DELTE =====================
 
-function listenCreate() {
-    $('#createBtn').on('click', (event) => {        
-        window.location.replace('./create.html');
-    });
-}
 
-function listenProfile() {
-    $('#profileBtn').on('click', (event) => {        
-        window.location.replace('./profile.html');
-        
-    });
-    viewProfile()
-}
 
 // =========================================================//
 
@@ -381,10 +365,7 @@ function documentReady() {
 //MAKE POST FOR CREATE A POST
     registerCreate();
     registerFind();
-    // registerProfile();
-//LISTENERS FOR NAVIGATION
-    listenCreate();
-    listenProfile();
+    registerProfile();
 }
 
 $(documentReady);

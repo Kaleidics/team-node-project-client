@@ -270,10 +270,17 @@ fieldset {
     background: rgba(0, 0, 0, 0.3);
     min-width: 20%;
     max-width: 20%;
+    min-height: 20%;
+    max-height: 20%;
     border-radius: 10px;
     margin: 10px;
+    cursor: pointer;
 }
 
+.post-item-list ul {
+    list-style-type: none;
+    padding: 0;
+}
 
 
 /*//////////////////////////////////////////////////////////////////// */
