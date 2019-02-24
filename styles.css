@@ -191,16 +191,24 @@ i {
 
 /* modal's close button */
 .closeBtn {
+    display: flex;
+    justify-content: flex-end;
     text-align: right;
     color: darkgray;
     float: right;
     font-size: 30px;
+    text-decoration: none;
+    cursor: default;
 }
 
-.closeBtn:hover, .closeBtn:focus {
+.cSpan {
+    text-decoration: underline;
+}
+.cSpan:hover {
     color: #666;
     text-decoration: none;
     cursor: pointer;
+    text-decoration: none;
 }
 /* toggle unhiding the modals */
 .unhide {
