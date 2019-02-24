@@ -252,19 +252,26 @@ fieldset {
 /* container of individual posts */
 #view-container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20vh;
+    margin-bottom: 20vh;
 }
-
+/* containers for profiles sections */
+#ownPosts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 .post-item {
     color: #fff;
     display: flex;
     justify-content: center;
     background: rgba(0, 0, 0, 0.3);
-    min-width: 5%;
-    max-width: 25%;
+    min-width: 20%;
+    max-width: 20%;
     border-radius: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 10px;
 }
 
 

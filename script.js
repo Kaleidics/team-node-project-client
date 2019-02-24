@@ -91,10 +91,12 @@ function login() {
     .then(res => res.json())
     .then(response => {
         console.log('login success', response);
-        const {authToken} = response;
+        const authToken = response.authtoken;
+        const userid = response.userid;
         console.log(authToken);
         //store jwt
         localStorage.setItem('localtoken', authToken);
+        localStorage.setItem('currentUser', userid);
     })
     .then(response => {
         if (localStorage.getItem('localtoken')){
@@ -130,6 +132,11 @@ function registerFind() {
     });
 }
 
+function registerProfile() {
+    $('#profileBtn').on('click', (event) => {
+        viewProfile();
+    })
+}
 
 
 //============================================================//
@@ -184,6 +191,28 @@ function viewPosts() {
     .catch(err => console.log(err));
 }
 
+function viewProfile() {
+    const base = 'http://localhost:8080/api/teams/';
+    const localtoken = localStorage.getItem('localtoken');
+    const currentUserId = localStorage.getItem('currentUser');
+    const url = base + currentUserId;
+    console.log(url);
+    return fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localtoken}`
+        }
+    })
+    .then(res => res.json())
+    .then(response => {
+        console.log('find triggered');
+        console.log(response);
+        populateProfile(response);
+    })
+    .catch(err => console.log(err));
+}
+
 
 
 
@@ -233,6 +262,7 @@ function logout() {
     $('#logoutBtn').on('click', (event) => {
         console.log('logged out');
         localStorage.removeItem('localtoken');
+        localStorage.removeItem('currentUser');
         location.reload();
         // $('#post-nav').toggleClass('hidden');
         // $('#pre-nav').toggleClass('hidden');
@@ -257,11 +287,11 @@ function registerArrow() {
 
 //==================== POPULATE FIND VIEW =====================
 
-function populatePosts(arr) {
+function populateProfile(arr) {
     let items = ``;
 
     for (let i = 0; i < arr.length; i++) {
-        const { title, sport, members, membersLimit, description } = arr[i];
+        const { title, sport, members, membersLimit, description, _id } = arr[i];
         const { lat, long } = arr[i].location;
 
         items = items.concat(`
@@ -273,13 +303,53 @@ function populatePosts(arr) {
                         <li>${membersLimit}</li>
                         <li>${members}</li>
                         <li><p>${description}</p></li>
-                        <li>${lat},${long}</li>
+                        <li id="${_id}">${lat},${long}</li>
                     </ul>
                 </div>
             </div>
         `);
+        console.log('before initMap', lat, long, _id);
+        // initMap(lat, long, _id);
+    }
+    $('#ownPosts').append(items);
+
+}
+function populatePosts(arr) {
+    let items = ``;
+
+    for (let i = 0; i < arr.length; i++) {
+        const { title, sport, members, membersLimit, description, _id } = arr[i];
+        const { lat, long } = arr[i].location;
+
+        items = items.concat(`
+            <div class="post-item">
+                <div class="post-item-list">
+                    <ul>
+                        <li>${title}</li>
+                        <li>${sport}</li>
+                        <li>${membersLimit}</li>
+                        <li>${members}</li>
+                        <li><p>${description}</p></li>
+                        <li id="${_id}">${lat},${long}</li>
+                    </ul>
+                </div>
+            </div>
+        `);
+        console.log('before initMap', lat, long, _id);
     }
     $('#view-container').html(items);
+
+}
+
+
+// =========================================================//
+
+//==================== LISTENERS FOR NAVIGATION =====================
+
+function listenCreate() {
+    $('#createBtn').on('click', (event) => {        
+        window.location.replace('.../create.html');
+    })
 }
 
 // =========================================================//
@@ -301,6 +371,9 @@ function documentReady() {
 //MAKE POST FOR CREATE A POST
     registerCreate();
     registerFind();
+    registerProfile();
+//LISTENERS FOR NAVIGATION
+    listenCreate()
 }
 
 $(documentReady);
