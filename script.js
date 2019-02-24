@@ -132,11 +132,11 @@ function registerFind() {
     });
 }
 
-function registerProfile() {
-    $('#profileBtn').on('click', (event) => {
-        viewProfile();
-    })
-}
+// function registerProfile() {
+//     $('#profileBtn').on('click', (event) => {
+//         viewProfile();
+//     })
+// }
 
 
 //============================================================//
@@ -192,11 +192,13 @@ function viewPosts() {
 }
 
 function viewProfile() {
+    console.log('trigged viewprofile');
     const base = 'http://localhost:8080/api/teams/';
     const localtoken = localStorage.getItem('localtoken');
     const currentUserId = localStorage.getItem('currentUser');
     const url = base + currentUserId;
     console.log(url);
+
     return fetch(url, {
         method: 'GET',
         headers: {
@@ -348,8 +350,16 @@ function populatePosts(arr) {
 
 function listenCreate() {
     $('#createBtn').on('click', (event) => {        
-        window.location.replace('.../create.html');
-    })
+        window.location.replace('./create.html');
+    });
+}
+
+function listenProfile() {
+    $('#profileBtn').on('click', (event) => {        
+        window.location.replace('./profile.html');
+        
+    });
+    viewProfile()
 }
 
 // =========================================================//
@@ -371,9 +381,10 @@ function documentReady() {
 //MAKE POST FOR CREATE A POST
     registerCreate();
     registerFind();
-    registerProfile();
+    // registerProfile();
 //LISTENERS FOR NAVIGATION
-    listenCreate()
+    listenCreate();
+    listenProfile();
 }
 
 $(documentReady);
