@@ -234,6 +234,27 @@ function viewSinglePost(postId) {
     .catch(err => console.log(err));
 }
 
+function viewSinglePost2(postId) {
+    const base = 'http://localhost:8080/api/teams/post/';
+    const localtoken = localStorage.getItem('localtoken');
+    const url = base + postId;
+    console.log(url);
+    return fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localtoken}`
+        }
+    })
+    .then(res => res.json())
+    .then(response => {
+        console.log('find triggered');
+        console.log(response);
+        modalizePost2(response);
+    })
+    .catch(err => console.log(err));
+}
+
 
 
 //==============================================================//
@@ -376,6 +397,31 @@ function modalizePost(arr) {
         </div>
     `)
 }
+function modalizePost2(arr) {
+    const { title, sport, members, membersLimit, description, _id } = arr;
+    const { lat, long } = arr.location;
+
+    $('#post-container').append(`
+    <div id="signup-Modal" class="modal unhide">
+            <div class="class modal-content">
+                <a href="#" class="closeBtn"><span class="cSpan">&times</span></a>
+                <div id="${_id}">
+                <div>
+                    <ul>
+                        <li><h4>${title}<h4></li>
+                        <li>Sport: ${sport}</li>
+                        <li>Max players: ${membersLimit}</li>
+                        <li>Current players: ${members}</li>
+                        <li>Description: <p>${description}</p></li>
+                        <li>${lat},${long}</li>
+                        <li><button class="joinBtn">Join</button></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+    `)
+}
 function profileCloseBtn() {
     $('#post-container').on('click', '.closeBtn', (event) => {
         console.log('clicked profile close');
@@ -390,6 +436,13 @@ function popPost() {
     $('#ownPosts').on('click', '.post-item', (event) => {
         const singlePost = $(event.target).closest('div.post-item').attr('id');
         viewSinglePost(singlePost);
+    });
+}
+
+function popPost2() {
+    $('#view-container').on('click', '.post-item', (event) => {
+        const singlePost = $(event.target).closest('div.post-item').attr('id');
+        viewSinglePost2(singlePost);
     });
 }
 
@@ -428,6 +481,7 @@ function documentReady() {
     registerProfile();
 //UPDATE DELETE
     popPost();
+    popPost2();
 //profile controls
 profileCloseBtn();
 // navBtn();
