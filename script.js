@@ -1,7 +1,30 @@
 'use strict'
 const sport = 'basketball';
 
-// ============== MODAL CONTROLS  =========================
+
+// ==================  SIMULATE STATES =====================
+//loads different navbars depending if jwt is in local storage
+function pseudoState() {
+    console.log('using pseudostate');
+    console.log('level 1 trigger');
+    if (localStorage.getItem('localtoken')) {
+        console.log('triggered');
+        $('#post-nav').addClass('unhidden');
+        $('#pre-nav').addClass('hidden');
+    }
+}
+
+function logout() {
+    $('#logoutBtn').on('click', (event) => {
+        console.log('logged out');
+        localStorage.removeItem('localtoken');
+        localStorage.removeItem('currentUser');
+        location.reload();
+    })
+}
+// =========================================================//
+
+// ======== MODAL CONTROLS FOR LOGIN AND SIGNUP ON LANDING PAGE  ========
 function toggleOnSignUp() {
     $('#signUpBtn').on('click', function(event) {
         $('#signup-Modal').addClass('unhide');
@@ -25,6 +48,25 @@ function toggleOnLogin() {
 function toggleOffLogin() {
     $('.closeBtn').on('click', function(event) {
         $('#login-Modal').removeClass('unhide');
+    });
+}
+//===================================================================//
+
+//================== AUTH FORM CLICK EVENT LISTENERS =======================
+
+function submitSignUp() {
+    $('#signup-submit').on('submit', (event) => {
+        event.preventDefault();
+        console.log('clicked');
+        SignUp();
+    });
+}
+
+function submitLogin() {
+    $('#login-submit').on('submit', (event) => {
+        event.preventDefault();
+        console.log('clicked');
+        login();
     });
 }
 //==========================================================//
@@ -109,8 +151,9 @@ function login() {
     .catch(err => console.log(err));
 }
 // =========================================================//
+
 //================== AJAX EVENT LISTENERS  ==================
-//for making a new post the form button
+//For the Create Game view, the button on the form
 function registerCreate() {
     $('.createTeamForm').on('submit', (event) => {
         event.preventDefault();
@@ -126,22 +169,24 @@ function registerCreate() {
     });
 }
 
+//Event listener for the Find a Game button on navbar, triggers AJAX request for all posts
 function registerFind() {
     $('#findBtn').on('click', (event) => {
         viewPosts();
     });
 }
 
+//Event listener for the My Profile button on navbar, triggers AJAX request for Posts, you created and Posts, you joined
 function registerProfile() {
     $('#profileBtn').on('click', (event) => {
         viewProfile();
     })
 }
 
-
 //============================================================//
+
 //==================  TEAM ROUTES AJAX  =========================
-//new post
+//AJAX function to create a team, triggered by form submit on Create a Game view
 function createTeam() {
     const url = 'http://localhost:8080/api/teams/';
 
@@ -178,6 +223,7 @@ function createTeam() {
     .catch(err => console.log(err));
 }
 
+//AJAX function to view all posts, trigged by click event on nav button Find a Game
 function viewPosts() {
     const url = 'http://localhost:8080/api/teams/';
 
@@ -191,6 +237,7 @@ function viewPosts() {
     .catch(err => console.log(err));
 }
 
+//AJAX function to view posts owned by Logged in User, and posts joined by Logged in user, triggered by click event on nav button My Profile
 function viewProfile() {
     const base = 'http://localhost:8080/api/teams/';
     const localtoken = localStorage.getItem('localtoken');
@@ -213,6 +260,7 @@ function viewProfile() {
     .catch(err => console.log(err));
 }
 
+//AJAX function to view a single post, represented as a modal in the My Profile View, trigged by click event on a single post
 function viewSinglePost(postId) {
     const base = 'http://localhost:8080/api/teams/post/';
     const localtoken = localStorage.getItem('localtoken');
@@ -229,11 +277,12 @@ function viewSinglePost(postId) {
     .then(response => {
         console.log('find triggered');
         console.log(response);
-        modalizePost(response);
+        modalizePostProfile(response);
     })
     .catch(err => console.log(err));
 }
 
+//AJAX function to view a single post, represented as a modal in the Find a Game view, trigged by click event on a single post
 function viewSinglePost2(postId) {
     const base = 'http://localhost:8080/api/teams/post/';
     const localtoken = localStorage.getItem('localtoken');
@@ -250,83 +299,21 @@ function viewSinglePost2(postId) {
     .then(response => {
         console.log('find triggered');
         console.log(response);
-        modalizePost2(response);
+        modalizePostFind(response);
     })
     .catch(err => console.log(err));
 }
 
-
-
 //==============================================================//
-//================== AUTH FORM LISTENERS =======================
-
-function submitSignUp() {
-    $('#signup-submit').on('submit', (event) => {
-        event.preventDefault();
-        console.log('clicked');
-        SignUp();
-    });
-}
-
-function submitLogin() {
-    $('#login-submit').on('submit', (event) => {
-        event.preventDefault();
-        console.log('clicked');
-        login();
-    });
-}
-//==========================================================//
-
-// ==================  SIMULATE STATES =====================
-//loads different navbars depending if jwt is in local storage
-function pseudoState() {
-    console.log('using pseudostate');
-    // $(window).on('load', (event) => {
-        console.log('level 1 trigger');
-        if (localStorage.getItem('localtoken')) {
-            console.log('triggered');
-            $('#post-nav').addClass('unhidden');
-            $('#pre-nav').addClass('hidden');
-        }
-
-    // })
-
-}
-
-function logout() {
-    $('#logoutBtn').on('click', (event) => {
-        console.log('logged out');
-        localStorage.removeItem('localtoken');
-        localStorage.removeItem('currentUser');
-        location.reload();
-        // $('#post-nav').toggleClass('hidden');
-        // $('#pre-nav').toggleClass('hidden');
-    })
-}
-// =========================================================//
-
-//==================== SCROLL CONTROLS =====================
-
-function registerArrow() {
-    $(".fas").on("click", () => {
-        $("html").animate({
-            scrollTop: 2000
-        }, 500)
-    });
-    $(window).on('scroll', () => {
-        $('.fas').addClass('hidden');
-    });
-}
-
-// =========================================================//
 
 //==================== POPULATE FIND VIEW =====================
-
+//DOM manipulation that follows AJAX call for User's owned posts
 function populateProfile(arr) {
     let items = ``;
 
     for (let i = 0; i < arr.length; i++) {
         const { title, sport, members, membersLimit, description, _id } = arr[i];
+        const { creator, joiners } = arr[i].members;
         const { lat, long } = arr[i].location;
 
         items = items.concat(`
@@ -335,8 +322,9 @@ function populateProfile(arr) {
                     <ul>
                         <li><h4>${title}<h4></li>
                         <li>Sport: ${sport}</li>
+                        <li>Host: ${creator}</li>
                         <li>Max players: ${membersLimit}</li>
-                        <li>Current players: ${members}</li>
+                        <li>Current players: ${creator} ${joiners}</li>
                         <li> Description: <p>${description}</p></li>
                         <li>${lat},${long}</li>
                     </ul>
@@ -347,20 +335,23 @@ function populateProfile(arr) {
     $('#ownPosts').append(items);
 }
 
+//DOM manipulation that follows AJAX call for Join Game view
 function populatePosts(arr) {
     let items = ``;
 
     for (let i = 0; i < arr.length; i++) {
-        const { title, sport, members, membersLimit, description, _id } = arr[i];
+        const { title, sport, membersLimit, description, _id } = arr[i];
+        const { creator, joiners } = arr[i].members;
         const { lat, long } = arr[i].location;
 
         items = items.concat(`
-            <div id="${_id}" class="post-item">
+            <div id="${_id}" class="findView post-item">
                     <ul class="post-item-list">
                         <li><h4>${title}<h4></li>
                         <li>Sport: ${sport}</li>
+                        <li>Host: ${creator}</li>
                         <li>Max players: ${membersLimit}</li>
-                        <li>Current players: ${members}</li>
+                        <li>Current players: ${creator} ${joiners}</li>
                         <li>Description: <p>${description}</p></li>
                         <li>${lat},${long}</li>
                     </ul>
@@ -371,8 +362,10 @@ function populatePosts(arr) {
     $('#view-container').html(items);
 }
 
-function modalizePost(arr) {
+//Creates a modal onclick in the Profile view for one post
+function modalizePostProfile(arr) {
     const { title, sport, members, membersLimit, description, _id } = arr;
+    const { creator, joiners } = arr.members;
     const { lat, long } = arr.location;
 
     $('#post-container').append(`
@@ -384,8 +377,9 @@ function modalizePost(arr) {
                     <ul>
                         <li><h4>${title}<h4></li>
                         <li>Sport: ${sport}</li>
+                        <li>Host: ${creator}</li>
                         <li>Max players: ${membersLimit}</li>
-                        <li>Current players: ${members}</li>
+                        <li>Current players: ${creator} ${joiners}</li>
                         <li>Description: <p>${description}</p></li>
                         <li>${lat},${long}</li>
                         <li><button class="update">Update</button></li>
@@ -397,8 +391,11 @@ function modalizePost(arr) {
         </div>
     `)
 }
-function modalizePost2(arr) {
-    const { title, sport, members, membersLimit, description, _id } = arr;
+
+//Creates modal onclick in the Join Games view for one post
+function modalizePostFind(arr) {
+    const { title, sport, membersLimit, description, _id } = arr;
+    const { creator, joiners } = arr.members;
     const { lat, long } = arr.location;
 
     $('#post-container').append(`
@@ -410,8 +407,9 @@ function modalizePost2(arr) {
                     <ul>
                         <li><h4>${title}<h4></li>
                         <li>Sport: ${sport}</li>
+                        <li>Host: ${creator}</li>
                         <li>Max players: ${membersLimit}</li>
-                        <li>Current players: ${members}</li>
+                        <li>Current players: ${creator} ${joiners}</li>
                         <li>Description: <p>${description}</p></li>
                         <li>${lat},${long}</li>
                         <li><button class="joinBtn">Join</button></li>
@@ -422,6 +420,7 @@ function modalizePost2(arr) {
         </div>
     `)
 }
+//Remove the appended modal from modalizePost functions
 function profileCloseBtn() {
     $('#post-container').on('click', '.closeBtn', (event) => {
         console.log('clicked profile close');
@@ -440,24 +439,42 @@ function popPost() {
 }
 
 function popPost2() {
-    $('#view-container').on('click', '.post-item', (event) => {
-        const singlePost = $(event.target).closest('div.post-item').attr('id');
+    $('#view-container').on('click', '.findView', (event) => {
+        console.log('view container');
+        const singlePost = $(event.target).closest('div.findView').attr('id');
+        console.log(singlePost);
         viewSinglePost2(singlePost);
     });
 }
 
 // =========================================================//
 
-function navBtn() {
-    $('#profileBtn').on('click', (event) => {
-        viewProfile();
-        setTimeout(function () {
-            window.location.href = './profile.html';
-        }, 3000)
-    })
+
+//==================== SANDBOX AREA =====================
+// function navBtn() {
+//     $('#profileBtn').on('click', (event) => {
+//         viewProfile();
+//         setTimeout(function () {
+//             window.location.href = './profile.html';
+//         }, 3000)
+//     })
+// }
+
+//==================== SCROLL CONTROLS =====================
+
+function registerArrow() {
+    $(".fas").on("click", () => {
+        $("html").animate({
+            scrollTop: 2000
+        }, 500)
+    });
+    $(window).on('scroll', () => {
+        $('.fas').addClass('hidden');
+    });
 }
 
-
+// =========================================================//
+// =========================================================//
 
 
 
@@ -483,7 +500,7 @@ function documentReady() {
     popPost();
     popPost2();
 //profile controls
-profileCloseBtn();
+    profileCloseBtn();
 // navBtn();
 }
 
