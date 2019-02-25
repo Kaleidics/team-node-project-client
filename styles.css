@@ -265,21 +265,31 @@ fieldset {
     margin-top: 20vh;
     margin-bottom: 20vh;
 }
+
+.profile-view {
+    flex-direction: column;
+}
+
+.profile-view1 {
+   justify-content: flex-start;
+}
 /* containers for profiles sections */
 #ownPosts {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    
 }
 .post-item {
     color: #fff;
     display: flex;
     justify-content: center;
     background: rgba(0, 0, 0, 0.3);
-    min-width: 20%;
+    max-width: 25vh;
+    /* min-width: 20%;
     max-width: 20%;
     min-height: 20%;
-    max-height: 20%;
+    max-height: 20%; */
     border-radius: 10px;
     margin: 10px;
     cursor: pointer;

@@ -253,7 +253,7 @@ function viewProfile() {
     })
     .then(res => res.json())
     .then(response => {
-        console.log('find triggered');
+        console.log('find profile triggered');
         console.log(response);
         populateProfile(response);
     })
@@ -372,7 +372,7 @@ function modalizePostProfile(arr) {
     <div id="signup-Modal" class="modal unhide">
             <div class="class modal-content">
                 <a href="#" class="closeBtn"><span class="cSpan">&times</span></a>
-                <div id="${_id}">
+                <div id="${_id}" class="modal-pop">
                 <div>
                     <ul>
                         <li><h4>${title}<h4></li>
@@ -447,6 +447,40 @@ function popPost2() {
     });
 }
 
+function deleteBtn() {
+    $('#post-container').on('click', 'button.delete', (event) => {
+        console.log('clicked');
+        const singlePost = $(event.target).parents('div.modal-pop').attr('id');
+        console.log(singlePost, event.target);
+        deletePost(singlePost);
+    });
+}
+
+function deletePost(id) {
+    const base = 'http://localhost:8080/api/teams/post/';
+    const localtoken = localStorage.getItem('localtoken');
+    const url = base + id;
+    console.log(url);
+
+    fetch(url, {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localtoken}`
+        },
+        method: 'DELETE'
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log("Deleted");
+            location.reload();
+            return;
+        }
+        throw new Error(response.status);
+    })
+    .catch(err => {
+        console.error(err);
+    });
+}
 // =========================================================//
 
 
@@ -501,7 +535,7 @@ function documentReady() {
     popPost2();
 //profile controls
     profileCloseBtn();
-// navBtn();
+    deleteBtn();
 }
 
 $(documentReady);
