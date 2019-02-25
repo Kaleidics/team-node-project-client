@@ -176,10 +176,10 @@ function registerFind() {
     });
 }
 
-//Event listener for the My Profile button on navbar, triggers AJAX request for Posts, you created and Posts, you joined
+// Event listener for the My Profile button on navbar, triggers AJAX request for Posts, you created and Posts, you joined
 function registerProfile() {
     $('#profileBtn').on('click', (event) => {
-        viewProfile();
+        location.reload();
     })
 }
 
@@ -332,7 +332,7 @@ function populateProfile(arr) {
             </div>
         `);
     }
-    $('#ownPosts').append(items);
+    $('#ownPosts').html(items);
 }
 
 //DOM manipulation that follows AJAX call for Join Game view
@@ -453,6 +453,7 @@ function deleteBtn() {
         const singlePost = $(event.target).parents('div.modal-pop').attr('id');
         console.log(singlePost, event.target);
         deletePost(singlePost);
+        $(event.target).closest('#signup-Modal').remove();
     });
 }
 
@@ -472,7 +473,7 @@ function deletePost(id) {
     .then(response => {
         if (response.ok) {
             console.log("Deleted");
-            location.reload();
+            $(`div[id^=${id}]`).remove();
             return;
         }
         throw new Error(response.status);

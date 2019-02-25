@@ -270,8 +270,11 @@ fieldset {
     flex-direction: column;
 }
 
-.profile-view1 {
-   justify-content: flex-start;
+.createdGames, .joinedGames {
+    /* font-family: spray; */
+    text-decoration: underline;
+    color: #e65722;
+    
 }
 /* containers for profiles sections */
 #ownPosts {
