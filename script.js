@@ -172,7 +172,7 @@ function registerCreate() {
 //Event listener for the Find a Game button on navbar, triggers AJAX request for all posts
 function registerFind() {
     $('#findBtn').on('click', (event) => {
-        viewPosts();
+        location.reload();
     });
 }
 
