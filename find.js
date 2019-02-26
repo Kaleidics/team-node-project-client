@@ -1,7 +1,7 @@
 'use strict';
 
 function viewPosts() {
-    const url = 'http://localhost:8080/api/teams/';
+    const url = 'https://immense-brushlands-16839.herokuapp.com/api/teams/';
 
     return fetch(url)
         .then(res => res.json())

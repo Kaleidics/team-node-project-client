@@ -423,7 +423,12 @@ function modalizePostFind(arr) {
     var location = { lat: lat, lng: -long };
     // The map, centered at Uluru
     var map = new google.maps.Map(
-        document.getElementById('map'), { zoom: 13, center: location });
+        document.getElementById('map'), {
+            zoom: 16, 
+            center: location, 
+            streetViewControl: false,
+            mapTypeControl: false 
+        });
     // The marker, positioned at Uluru
     var marker = new google.maps.Marker({ position: location, map: map });
 }
