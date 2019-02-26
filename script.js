@@ -33,7 +33,7 @@ function toggleOnSignUp() {
 }
 
 function toggleOffSignUp() {
-    $('.closeBtn').on('click', function(event) {
+    $('.cSpan').on('click', function(event) {
         $('#signup-Modal').removeClass('unhide');
     });
 }
@@ -46,7 +46,7 @@ function toggleOnLogin() {
 }
 
 function toggleOffLogin() {
-    $('.closeBtn').on('click', function(event) {
+    $('.cSpan').on('click', function(event) {
         $('#login-Modal').removeClass('unhide');
     });
 }
@@ -382,6 +382,7 @@ function modalizePostProfile(arr) {
                         <li>Current players: ${creator} ${joiners}</li>
                         <li>Description: <p>${description}</p></li>
                         <li>${lat},${long}</li>
+                        <div id='map' class="map-style"></div>
                         <li><button class="update">Update</button></li>
                         <li><button class="delete">Delete</button></li>
                     </ul>
@@ -390,6 +391,16 @@ function modalizePostProfile(arr) {
             </div>
         </div>
     `)
+    var location = { lat: lat, lng: -long };
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+        document.getElementById('map'), {
+            zoom: 15,
+            center: location,
+            streetViewControl: false,
+            mapTypeControl: false
+        });
+    var marker = new google.maps.Marker({ position: location, map: map });
 }
 
 //Creates modal onclick in the Join Games view for one post
@@ -433,7 +444,7 @@ function modalizePostFind(arr) {
 }
 //Remove the appended modal from modalizePost functions
 function profileCloseBtn() {
-    $('#post-container').on('click', '.closeBtn', (event) => {
+    $('#post-container').on('click', '.cSpan', (event) => {
         console.log('clicked profile close');
         $(event.target).closest('#signup-Modal').remove();
     });
