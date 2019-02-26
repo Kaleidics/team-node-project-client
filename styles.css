@@ -198,7 +198,7 @@ i {
     padding: 20px;
 }
 
-.allPosts {
+.postUl {
     list-style-type: none;
     padding: 0;
 }
@@ -257,6 +257,10 @@ fieldset {
 
 .createTeamForm {
     background: wheat;
+}
+
+.updateTeamForm {
+    margin: 10px;
 }
 
 #post-container {
