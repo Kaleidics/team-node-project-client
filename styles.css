@@ -334,7 +334,7 @@ fieldset {
 
 
 /* ==========================  MEDIA QUERIES  ========================== */
-@media(max-width: 1440px) {
+@media(max-width: 1460px) {
     .name-div {
         max-width: 40%;
     }
@@ -381,7 +381,7 @@ fieldset {
     }
 
     .tagline {
-        display: none;
+        /* display: none; */
         padding: 0;
         max-width: 100%;
     }
