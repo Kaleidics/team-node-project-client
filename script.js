@@ -404,7 +404,7 @@ function modalizePostFind(arr) {
                 <a href="#" class="closeBtn"><span class="cSpan">&times</span></a>
                 <div id="${_id}">
                 <div>
-                    <ul>
+                    <ul class="allPosts">
                         <li><h4>${title}<h4></li>
                         <li>Sport: ${sport}</li>
                         <li>Host: ${creator}</li>
@@ -412,6 +412,7 @@ function modalizePostFind(arr) {
                         <li>Current players: ${creator} ${joiners}</li>
                         <li>Description: <p>${description}</p></li>
                         <li>${lat},${long}</li>
+                        <div id='map' class="map-style"></div>
                         <li><button class="joinBtn">Join</button></li>
                     </ul>
                 </div>
@@ -419,6 +420,12 @@ function modalizePostFind(arr) {
             </div>
         </div>
     `)
+    var location = { lat: lat, lng: -long };
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+        document.getElementById('map'), { zoom: 13, center: location });
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({ position: location, map: map });
 }
 //Remove the appended modal from modalizePost functions
 function profileCloseBtn() {
