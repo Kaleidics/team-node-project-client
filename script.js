@@ -197,32 +197,76 @@ function createTeam() {
     const lat = 1;
     const long = 2;
     const address = $('#search-input').val();
-    console.log('attempted new post', address)
-    const newPost = {
-        sport: sport,
-        title: title,
-        membersLimit: membersLimit,
-        description: description,
-        address: address,
-        location: {
-            lat: lat,
-            long: long 
-        }
-    }
+    console.log('attempted new post', address);
 
-    return fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(newPost),
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${localtoken}`
-        }
-    })
-    .then(res => res.json())
-    .then(response => {
-        console.log(response);
-    })
-    .catch(err => console.log(err));
+
+    const googleQuery = address.replace(/\s/g, '+');
+    console.log(googleQuery);
+    const geocodeBase = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
+    const geoKey = '&key=AIzaSyCVE0EVrFMwT7F0tBXuStCz7mpfmrO_Hd4';
+    const geocodeUrl = geocodeBase + googleQuery + geoKey;
+    
+    fetch(geocodeUrl)
+        .then(res => res.json())
+        .then(response => {
+            const { lat, lng } = response.results[0].geometry.location;
+            const newPost = {
+                sport: sport,
+                title: title,
+                membersLimit: membersLimit,
+                description: description,
+                address: address,
+                location: {
+                    lat: lat,
+                    long: lng
+                }
+            }
+            return newPost;
+        })
+        .then(response =>{
+            return fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(response),
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${localtoken}`
+                }
+            })
+                .then(res => res.json())
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
+        // console.log("outside",lat, lng);
+
+
+    // const newPost = {
+    //     sport: sport,
+    //     title: title,
+    //     membersLimit: membersLimit,
+    //     description: description,
+    //     address: address,
+    //     location: {
+    //         lat: lat,
+    //         long: lng 
+    //     }
+    // }
+
+    // return fetch(url, {
+    //     method: 'POST',
+    //     body: JSON.stringify(newPost),
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         Authorization: `Bearer ${localtoken}`
+    //     }
+    // })
+    // .then(res => res.json())
+    // .then(response => {
+    //     console.log(response);
+    // })
+    // .catch(err => console.log(err));
 }
 
 //AJAX function to view all posts, trigged by click event on nav button Find a Game
