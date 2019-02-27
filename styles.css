@@ -131,7 +131,7 @@ i {
     font-family: spray;
     font-size: 1.25em;
     color: #111;
-    max-width: 25%;
+    max-width: 26%;
     border-bottom: 5px solid #111;
     margin: 20px;
     font-weight: bold;
@@ -291,6 +291,7 @@ fieldset {
 .createdGames, .joinedGames {
     /* font-family: spray; */
     text-decoration: underline;
+    text-decoration-color: #111;
     color: #e65722;
     
 }
@@ -338,9 +339,40 @@ fieldset {
 
 
 /* ==========================  MEDIA QUERIES  ========================== */
-@media(max-width: 1460px) {
+@media(max-width: 2450px) {
+    .name-div {
+        max-width: 30%;
+    }
+    .tagline {
+        max-width: 30%;
+    }
+}
+@media(max-width: 2110px) {
+    .name-div {
+        max-width: 35%;
+    }
+    .tagline {
+        max-width: 35%;
+    }
+}
+@media(max-width: 2110px) {
     .name-div {
         max-width: 40%;
+    }
+
+    .tagline {
+        max-width: 40%;
+    }
+}
+@media(max-width: 1600px) {
+    .name-div {
+        max-width: 45%;
+    }
+}
+
+@media(max-width: 1460px) {
+    .name-div {
+        max-width: 50%;
     }
 
     .tagline {
@@ -351,7 +383,7 @@ fieldset {
         top: 10%;
     }
 }
-@media(max-width: 960px) {
+@media(max-width: 1260px) {
     .name-div {
         max-width: 55%;
     }
@@ -361,7 +393,29 @@ fieldset {
     }
 
 }
-@media(max-width: 800px) {
+@media(max-width: 1150px) {
+    .name-div {
+        max-width: 60%;
+    }
+
+    .tagline {
+        padding: 0;
+        max-width: 70%;
+    }
+
+}
+@media(max-width: 1150px) {
+    .name-div {
+        max-width: 65%;
+    }
+
+    .tagline {
+        padding: 0;
+        max-width: 65%;
+    }
+
+}
+@media(max-width: 970px) {
     .name-div {
         max-width: 70%;
     }
@@ -372,9 +426,23 @@ fieldset {
     }
 
 }
-@media(max-width: 600px) {
+
+@media(max-width: 910px) {
+    .name-div {
+        max-width: 75%;
+    }
+
+    .tagline {
+        padding: 0;
+        max-width: 75%;
+    }
+
+}
+
+
+@media(max-width: 800px) {
     .main-pic {
-        min-height: 50vh;
+        /* min-height: 50vh; */
 
     }
     .name-div {
@@ -394,6 +462,31 @@ fieldset {
     }
     .pic-text {
         top:20%;
+    }
+}
+@media(max-width: 500px) {
+    .main-pic {
+        min-height: 75vh;
+
+    }
+    .name-div {
+        display: flex;
+        justify-content: center;
+        font-size: 10px;
+        max-width: 100%;
+    }
+
+    .tagline {
+        /* display: none; */
+        font-size: 15px;
+        padding: 0;
+        max-width: 100%;
+    }
+    .fas {
+        display: none;
+    }
+    .pic-text {
+        top:35%;
     }
 }
 @media(max-width:568px) {

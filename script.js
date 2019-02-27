@@ -194,14 +194,16 @@ function createTeam() {
     const title = $('#titleCreate').val();
     const membersLimit = $('#playerLimitCreate').val();
     const description = $('#descriptionCreate').val();
-    const lat = $('#latCreate').val();
-    const long = $('#longCreate').val();
-
+    const lat = 1;
+    const long = 2;
+    const address = $('#search-input').val();
+    console.log('attempted new post', address)
     const newPost = {
         sport: sport,
         title: title,
         membersLimit: membersLimit,
         description: description,
+        address: address,
         location: {
             lat: lat,
             long: long 
@@ -312,7 +314,7 @@ function populateProfile(arr) {
     let items = ``;
 
     for (let i = 0; i < arr.length; i++) {
-        const { title, sport, members, membersLimit, description, _id } = arr[i];
+        const { title, sport, members, membersLimit, description, _id, address } = arr[i];
         const { creator, joiners } = arr[i].members;
         const { lat, long } = arr[i].location;
 
@@ -327,6 +329,7 @@ function populateProfile(arr) {
                         <li>Current players: ${creator} ${joiners}</li>
                         <li> Description: <p>${description}</p></li>
                         <li>${lat},${long}</li>
+                        <li>${address}</li>
                     </ul>
                 </div>
             </div>
@@ -340,7 +343,7 @@ function populatePosts(arr) {
     let items = ``;
 
     for (let i = 0; i < arr.length; i++) {
-        const { title, sport, membersLimit, description, _id } = arr[i];
+        const { title, sport, membersLimit, description, _id, address } = arr[i];
         const { creator, joiners } = arr[i].members;
         const { lat, long } = arr[i].location;
 
@@ -354,6 +357,7 @@ function populatePosts(arr) {
                         <li>Current players: ${creator} ${joiners}</li>
                         <li>Description: <p>${description}</p></li>
                         <li>${lat},${long}</li>
+                        <li>${address}</li>
                     </ul>
             </div>
         `);
@@ -364,7 +368,7 @@ function populatePosts(arr) {
 
 //Creates a modal onclick in the Profile view for one post
 function modalizePostProfile(arr) {
-    const { title, sport, members, membersLimit, description, _id } = arr;
+    const { title, sport, members, membersLimit, description, _id, address } = arr;
     const { creator, joiners } = arr.members;
     const { lat, long } = arr.location;
 
@@ -382,6 +386,7 @@ function modalizePostProfile(arr) {
                         <li>Current players: ${creator} ${joiners}</li>
                         <li>Description: <p>${description}</p></li>
                         <li>${lat},${long}</li>
+                        <li>${address}</li>
                         <div id='map' class="map-style"></div>
                         <li><button class="update">Update</button></li>
                         <li><button class="delete">Delete</button></li>
@@ -405,7 +410,7 @@ function modalizePostProfile(arr) {
 
 //Creates modal onclick in the Join Games view for one post
 function modalizePostFind(arr) {
-    const { title, sport, membersLimit, description, _id } = arr;
+    const { title, sport, membersLimit, description, _id, address } = arr;
     const { creator, joiners } = arr.members;
     const { lat, long } = arr.location;
 
@@ -420,9 +425,10 @@ function modalizePostFind(arr) {
                         <li>Sport: ${sport}</li>
                         <li>Host: ${creator}</li>
                         <li>Max players: ${membersLimit}</li>
-                        <li>Current players: ${creator} ${joiners}</li>
+                        <li>Current players: ${joiners}</li>
                         <li>Description: <p>${description}</p></li>
                         <li>${lat},${long}</li>
+                        <li>${address}</li>
                         <div id='map' class="map-style"></div>
                         <li><button class="joinBtn">Join</button></li>
                     </ul>
@@ -532,8 +538,8 @@ function callUpdate(id) {
     const title = $('#titleCreate').val();
     const membersLimit = $('#playerLimitCreate').val();
     const description = $('#descriptionCreate').val();
-    const lat = $('#latCreate').val();
-    const long = $('#longCreate').val();
+    // const lat = $('#latCreate').val();
+    const long = $('#search-input').val();
 
     const base = 'http://localhost:8080/api/teams/update/';
     const url = base + id;
@@ -593,9 +599,8 @@ function generateUpdateForm(id) {
                         <input id="playerLimitCreate" type="number" name="PlayerLimit" min="1" max="99" required>
                         <label for="Description">Give us some details</label>
                         <input id="descriptionCreate" type="text" name="Description" placeholder="Type here" id="create-des" required>
-                        <label for="">Hard coding location until gmaps integration</label>
-                        <input id="latCreate" type="number" name="lat" placeholder="lat" id="" step="0.0001" required>
-                        <input id="longCreate" type="number" name="long" placeholder="long" id="" step="0.0001" required>
+                        <label for="search-input">Search for a court to play at</label>
+                        <input id="search-input" type="text" name="search-input">
                         <input type="submit" value="Update">
                     </fieldset>
                 </form>
@@ -604,6 +609,8 @@ function generateUpdateForm(id) {
         </div>
     </div>
     `)
+    var input = document.getElementById('search-input');
+    var autocomplete = new google.maps.places.Autocomplete(input);
 }
 
 // function updatePost(team, id) {
@@ -687,6 +694,8 @@ function documentReady() {
     deleteBtn();
     updateBtn();
     registerUpdate();
+    //
+    // mapsSearch()
 }
 
 $(documentReady);
