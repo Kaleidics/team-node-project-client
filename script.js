@@ -372,7 +372,6 @@ function populateProfile(arr) {
                         <li>Max players: ${membersLimit}</li>
                         <li>Current players: ${creator} ${joiners}</li>
                         <li> Description: <p>${description}</p></li>
-                        <li>${lat},${long}</li>
                         <li>${address}</li>
                     </ul>
                 </div>
@@ -400,7 +399,6 @@ function populatePosts(arr) {
                         <li>Max players: ${membersLimit}</li>
                         <li>Current players: ${creator} ${joiners}</li>
                         <li>Description: <p>${description}</p></li>
-                        <li>${lat},${long}</li>
                         <li>${address}</li>
                     </ul>
             </div>
@@ -429,7 +427,6 @@ function modalizePostProfile(arr) {
                         <li>Max players: ${membersLimit}</li>
                         <li>Current players: ${creator} ${joiners}</li>
                         <li>Description: <p>${description}</p></li>
-                        <li>${lat},${long}</li>
                         <li>${address}</li>
                         <div id='map' class="map-style"></div>
                         <li><button class="update">Update</button></li>
@@ -440,7 +437,7 @@ function modalizePostProfile(arr) {
             </div>
         </div>
     `)
-    var location = { lat: lat, lng: -long };
+    var location = { lat: lat, lng: long };
     // The map, centered at Uluru
     var map = new google.maps.Map(
         document.getElementById('map'), {
@@ -471,7 +468,6 @@ function modalizePostFind(arr) {
                         <li>Max players: ${membersLimit}</li>
                         <li>Current players: ${joiners}</li>
                         <li>Description: <p>${description}</p></li>
-                        <li>${lat},${long}</li>
                         <li>${address}</li>
                         <div id='map' class="map-style"></div>
                         <li><button class="joinBtn">Join</button></li>
@@ -481,7 +477,8 @@ function modalizePostFind(arr) {
             </div>
         </div>
     `)
-    var location = { lat: lat, lng: -long };
+    console.log('before map', lat, long);
+    var location = { lat: lat, lng: long };
     // The map, centered at Uluru
     var map = new google.maps.Map(
         document.getElementById('map'), {
