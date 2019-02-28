@@ -194,6 +194,7 @@ function createTeam() {
     const title = $('#titleCreate').val();
     const membersLimit = $('#playerLimitCreate').val();
     const description = $('#descriptionCreate').val();
+    const rules = $('#rulesCreate').val();
     const lat = 1;
     const long = 2;
     const address = $('#search-input').val();
@@ -212,6 +213,7 @@ function createTeam() {
             const { lat, lng } = response.results[0].geometry.location;
             const newPost = {
                 sport: sport,
+                rules: rules,
                 title: title,
                 membersLimit: membersLimit,
                 description: description,
@@ -358,7 +360,7 @@ function populateProfile(arr) {
     let items = ``;
 
     for (let i = 0; i < arr.length; i++) {
-        const { title, sport, members, membersLimit, description, _id, address } = arr[i];
+        const { title, sport, members, membersLimit, description, _id, address, rules } = arr[i];
         const { creator, joiners } = arr[i].members;
         const { lat, long } = arr[i].location;
 
@@ -366,13 +368,11 @@ function populateProfile(arr) {
             <div id="${_id}" class="post-item">
                 <div class="post-item-list">
                     <ul>
-                        <li>${title}</li>
-                        <li>Sport: ${sport}</li>
-                        <li>Host: ${creator}</li>
-                        <li>Max players: ${membersLimit}</li>
-                        <li>Current players: ${creator} ${joiners}</li>
-                        <li> Description: <p>${description}</p></li>
-                        <li>${address}</li>
+                        <li class="preTitle"><h3>${title}</h3></li>
+                        <li class="preRules">Rules: ${rules}</li>
+                        <li class="preMax">Looking for: ${membersLimit} players</li>
+                        <li class="preDes">Description: <div>${description}</div></li>
+                        <li class="preAdd">Location: <address>${address}</address></li>
                     </ul>
                 </div>
             </div>
@@ -386,7 +386,7 @@ function populatePosts(arr) {
     let items = ``;
 
     for (let i = 0; i < arr.length; i++) {
-        const { title, sport, membersLimit, description, _id, address } = arr[i];
+        const { title, sport, membersLimit, description, _id, address, rules } = arr[i];
         const { creator, joiners } = arr[i].members;
         const { lat, long } = arr[i].location;
 
@@ -394,13 +394,11 @@ function populatePosts(arr) {
             <div id="${_id}" class="findView post-item">
                 <div class="post-item-list">
                     <ul>
-                        <li class="preTitle">${title}</li>
-                        <li class="preSport">Sport: ${sport}</li>
-                        <li class="preHost">Host: ${creator}</li>
-                        <li class="preMax">Max players: ${membersLimit}</li>
-                        <li class="preCurrent">Current players: ${creator} ${joiners}</li>
-                        <li class="preDes">Description: <p>${description}</p></li>
-                        <li class="preAdd">${address}</li>
+                        <li class="preTitle"><h3>${title}</h3></li>
+                        <li class="preRules">Rules: ${rules}</li>
+                        <li class="preMax">Looking for: ${membersLimit} players</li>
+                        <li class="preDes">Description: <div>${description}</div></li>
+                        <li class="preAdd">Location: <address>${address}</address></li>
                     </ul>
                 </div>
             </div>
@@ -412,7 +410,7 @@ function populatePosts(arr) {
 
 //Creates a modal onclick in the Profile view for one post
 function modalizePostProfile(arr) {
-    const { title, sport, members, membersLimit, description, _id, address } = arr;
+    const { title, sport, members, membersLimit, description, _id, address, rules } = arr;
     let { creator, joiners } = arr.members;
     const { lat, long } = arr.location;
     console.log('creator is:', creator);
@@ -426,13 +424,13 @@ function modalizePostProfile(arr) {
                 <div id="${_id}" class="modal-pop">
                 <div>
                     <ul class="postUl">
-                        <li>${title}</li>
-                        <li>Sport: ${sport}</li>
+                        <li><h3>${title}</h3></li>
                         <li>Host: ${creator}</li>
-                        <li>Max players: ${membersLimit}</li>
+                        <li>Rules: ${rules}</li>
+                        <li>Looking for: ${membersLimit} players</li>
                         <li>Current players: ${creator} ${joiners}</li>
                         <li>Description: <p>${description}</p></li>
-                        <li>${address}</li>
+                        <li>Location: <address>${address}</address></li>
                         <div id='map' class="map-style"></div>
                         <li><button class="update">Update</button></li>
                         <li><button class="delete">Delete</button></li>
@@ -456,7 +454,7 @@ function modalizePostProfile(arr) {
 
 //Creates modal onclick in the Join Games view for one post
 function modalizePostFind(arr) {
-    const { title, sport, membersLimit, description, _id, address } = arr;
+    const { title, sport, membersLimit, description, _id, address, rules } = arr;
     let { creator, joiners } = arr.members;
     const { lat, long } = arr.location;
     console.log('creator is:', JSON.stringify(creator));
@@ -471,13 +469,13 @@ function modalizePostFind(arr) {
                 <div id="${_id}">
                 <div>
                     <ul class="postUl">
-                        <li class="postTitle">${title}</li>
-                        <li class="postSport">Sport: ${sport}</li>
-                        <li class="postHost">Host test: ${creator}</li>
-                        <li class="postMaxPlayer">Max players: ${membersLimit}</li>
+                        <li class="postTitle"><h3>${title}</h3></li>
+                        <li class="postHost"><span>Host test: ${creator}</span></li>
+                        <li class="postRules">Rules: ${rules}</li>
+                        <li class="postMaxPlayer">Looking for: ${membersLimit} players</li>
                         <li class="postCurrentPlayers">Current players: ${joiners}</li>
                         <li class="postDes">Description: <p>${description}</p></li>
-                        <li class="postAdd">${address}</li>
+                        <li class="postAdd">Location: <address>${address}</address></li>
                         <div id='map' class="map-style"></div>
                         <li class="postButton"><button class="joinBtn">Join</button></li>
                     </ul>
@@ -588,6 +586,7 @@ function callUpdate(id) {
     const title = $('#titleCreate').val();
     const membersLimit = $('#playerLimitCreate').val();
     const description = $('#descriptionCreate').val();
+    const rules = $('#rulesCreate').val();
     // const lat = $('#latCreate').val();
     const long = $('#search-input').val();
 
@@ -597,6 +596,7 @@ function callUpdate(id) {
 
     const updatePost = {
         sport: sport,
+        rules: rules,
         title: title,
         membersLimit: membersLimit,
         description: description,

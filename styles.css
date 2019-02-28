@@ -307,10 +307,10 @@ fieldset {
     display: flex;
     justify-content: center;
     background: rgba(0, 0, 0, 0.3);
-    min-width: 33vh;
-    max-width: 33vh;
-    min-height: 40vh;
-    max-height: 33vh;
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 300px;
+    max-height: 350px;
     border-radius: 10px;
     margin: 10px;
     cursor: pointer;
@@ -326,9 +326,19 @@ fieldset {
 
 /*//////////////////////////////////////////////////////////////////// */
 
-.postDes p, .preDes p {
+.postDes div, .preDes div {
     text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width:300px
 }
+
+.post-item-list ul li {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
 
 
 
