@@ -470,7 +470,7 @@ function modalizePostFind(arr) {
                 <div>
                     <ul class="postUl">
                         <li class="postTitle"><h3>${title}</h3></li>
-                        <li class="postHost"><span>Host test: ${creator}</span></li>
+                        <li class="postHost">Host: ${creator}</li>
                         <li class="postRules">Rules: ${rules}</li>
                         <li class="postMaxPlayer">Looking for: ${membersLimit} players</li>
                         <li class="postCurrentPlayers">Current players: ${joiners}</li>
