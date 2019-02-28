@@ -366,7 +366,7 @@ function populateProfile(arr) {
             <div id="${_id}" class="post-item">
                 <div class="post-item-list">
                     <ul>
-                        <li><h4>${title}<h4></li>
+                        <li>${title}</li>
                         <li>Sport: ${sport}</li>
                         <li>Host: ${creator}</li>
                         <li>Max players: ${membersLimit}</li>
@@ -392,15 +392,17 @@ function populatePosts(arr) {
 
         items = items.concat(`
             <div id="${_id}" class="findView post-item">
-                    <ul class="post-item-list">
-                        <li><h4>${title}<h4></li>
-                        <li>Sport: ${sport}</li>
-                        <li>Host: ${creator}</li>
-                        <li>Max players: ${membersLimit}</li>
-                        <li>Current players: ${creator} ${joiners}</li>
-                        <li>Description: <p>${description}</p></li>
-                        <li>${address}</li>
+                <div class="post-item-list">
+                    <ul>
+                        <li class="preTitle">${title}</li>
+                        <li class="preSport">Sport: ${sport}</li>
+                        <li class="preHost">Host: ${creator}</li>
+                        <li class="preMax">Max players: ${membersLimit}</li>
+                        <li class="preCurrent">Current players: ${creator} ${joiners}</li>
+                        <li class="preDes">Description: <p>${description}</p></li>
+                        <li class="preAdd">${address}</li>
                     </ul>
+                </div>
             </div>
         `);
         console.log('before initMap', lat, long, _id);
@@ -411,8 +413,11 @@ function populatePosts(arr) {
 //Creates a modal onclick in the Profile view for one post
 function modalizePostProfile(arr) {
     const { title, sport, members, membersLimit, description, _id, address } = arr;
-    const { creator, joiners } = arr.members;
+    let { creator, joiners } = arr.members;
     const { lat, long } = arr.location;
+    console.log('creator is:', creator);
+    creator = creator.username;
+    console.log('creator.username is:', creator);
 
     $('#post-container').append(`
     <div id="signup-Modal" class="modal unhide">
@@ -421,7 +426,7 @@ function modalizePostProfile(arr) {
                 <div id="${_id}" class="modal-pop">
                 <div>
                     <ul class="postUl">
-                        <li><h4>${title}<h4></li>
+                        <li>${title}</li>
                         <li>Sport: ${sport}</li>
                         <li>Host: ${creator}</li>
                         <li>Max players: ${membersLimit}</li>
@@ -452,8 +457,12 @@ function modalizePostProfile(arr) {
 //Creates modal onclick in the Join Games view for one post
 function modalizePostFind(arr) {
     const { title, sport, membersLimit, description, _id, address } = arr;
-    const { creator, joiners } = arr.members;
+    let { creator, joiners } = arr.members;
     const { lat, long } = arr.location;
+    console.log('creator is:', JSON.stringify(creator));
+    console.log('creator is:', creator);
+    creator = creator.username;
+    console.log('creator.username is:', creator);
 
     $('#post-container').append(`
     <div id="signup-Modal" class="modal unhide">
@@ -462,15 +471,15 @@ function modalizePostFind(arr) {
                 <div id="${_id}">
                 <div>
                     <ul class="postUl">
-                        <li><h4>${title}<h4></li>
-                        <li>Sport: ${sport}</li>
-                        <li>Host: ${creator}</li>
-                        <li>Max players: ${membersLimit}</li>
-                        <li>Current players: ${joiners}</li>
-                        <li>Description: <p>${description}</p></li>
-                        <li>${address}</li>
+                        <li class="postTitle">${title}</li>
+                        <li class="postSport">Sport: ${sport}</li>
+                        <li class="postHost">Host test: ${creator}</li>
+                        <li class="postMaxPlayer">Max players: ${membersLimit}</li>
+                        <li class="postCurrentPlayers">Current players: ${joiners}</li>
+                        <li class="postDes">Description: <p>${description}</p></li>
+                        <li class="postAdd">${address}</li>
                         <div id='map' class="map-style"></div>
-                        <li><button class="joinBtn">Join</button></li>
+                        <li class="postButton"><button class="joinBtn">Join</button></li>
                     </ul>
                 </div>
             </div>
