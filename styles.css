@@ -358,7 +358,9 @@ fieldset {
 
 
 
-
+.preventScroll {
+    overflow: hidden;
+}
 
 
 
