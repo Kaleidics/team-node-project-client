@@ -356,6 +356,19 @@ fieldset {
     padding-bottom: 10px;
 }
 
+.class {
+    width: 500px;
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: #f4f4f4;
+    margin: 15vh auto;
+    padding: 20px;
+   
+    box-shadow: 0 5px 8px 0 rgb(0, 0, 0), 0 7px 20px 0 rgb(0, 0, 0);
+}
 
 .orange {
     color: #ff6600;
