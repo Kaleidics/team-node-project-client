@@ -59,7 +59,7 @@ function popPost() {
     $('#ownPosts').on('click', '.post-item', (event) => {
         const singlePost = $(event.target).closest('div.post-item').attr('id');
         viewSinglePost(singlePost);
-        $('body').addClass('preventScroll');
+        $('main').addClass('preventScroll');
     });
 }
 
