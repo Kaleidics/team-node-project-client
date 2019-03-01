@@ -285,8 +285,8 @@ fieldset {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 20vh;
-    margin-bottom: 20vh;
+   margin: 20vh auto 20vh auto;
+   width: 90vw;
 }
 
 .profile-view {
@@ -302,9 +302,11 @@ fieldset {
 }
 /* containers for profiles sections */
 #ownPosts {
+    width: 90vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 0 auto;
     
 }
 .post-item {

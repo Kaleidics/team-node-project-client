@@ -518,7 +518,7 @@ function popPost2() {
         console.log('view container');
         const singlePost = $(event.target).closest('div.findView').attr('id');
         console.log(singlePost);
-        $('main').addClass('preventScroll');
+        $('body').addClass('preventScroll');
         viewSinglePost2(singlePost);
     });
 }
