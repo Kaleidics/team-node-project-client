@@ -347,7 +347,8 @@ fieldset {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    width:300px
+    width:250px;
+    margin: 0 auto;
 }
 
 .post-item-list ul li {
@@ -356,7 +357,9 @@ fieldset {
 }
 
 
-
+.orange {
+    color: #ff6600;
+}
 
 .preventScroll {
     overflow: hidden;
