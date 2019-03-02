@@ -410,7 +410,9 @@ fieldset {
 	transform: rotate(45deg) translate(-9px,-5px);
 }
 
-
+.content {
+    display: none;
+}
 
 
 /* ==========================  MEDIA QUERIES  ========================== */
@@ -539,7 +541,12 @@ fieldset {
         top:20%;
     }
 }
-@media(max-width: 500px) {
+@media(max-width: 1024px) {
+
+    .content {
+        display: block;
+    }
+
     .navbar {
     padding: 0;
     display: flex;
@@ -556,7 +563,7 @@ fieldset {
         margin-right: 0;
     }
 
-    #logoSpace {
+    .logoSpace {
     padding: 0 5px 0 10px;
     align-items: center;
     justify-content: space-between;

@@ -724,14 +724,14 @@ function registerArrow() {
 // }
 
 function mobileNav() {
-    $('#icon').on('click', (event) => {
-        console.log($('#icon'));
-        $('#icon').toggleClass('change');
+    $('.content').on('click', (event) => {
+        // console.log($('#icon'));
+        $('.content').toggleClass('change');
         $('.mobileHide').toggle();
         $('.nav').toggleClass('heightMobile');
-        $('#logoSpace').toggleClass('overlaySpacing');
-        $('#loginBtn').toggleClass('overlaySpacing');
-        $('#signUpBtn').toggleClass('overlaySpacing');
+        $('.navbar li').toggleClass('overlaySpacing');
+        // $('#loginBtn').toggleClass('overlaySpacing');
+        // $('#signUpBtn').toggleClass('overlaySpacing');
     });
 }
 
