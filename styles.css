@@ -17,7 +17,7 @@ html, body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: flex-start;
     padding: 5px 0;
@@ -543,7 +543,7 @@ fieldset {
     .navbar {
     padding: 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     /* margin: 0 auto; */
     text-align: center;
@@ -551,18 +551,30 @@ fieldset {
     margin: 0;
     width: 100%;
     }
+
+    .navbar li {
+        margin: 0;
+    }
+
     #logoSpace {
-    padding: 0 5px 0 5px;
+    padding: 0 5px 0 10px;
     align-items: center;
     justify-content: space-between;
     display: flex;
-    width: 100%;
+    width: 95%;
     }
-    #loginBtn, #signUpBtn {
+    .mobileHide {
         display: none;
     }
-    .navbar li {
-        margin: 0;
+
+    .heightMobile {
+        height: 100vh;
+    }
+    /* .mobileShow {
+        display: flex;
+    } */
+    .overlaySpacing {
+        margin-bottom: 25px;
     }
     .main-pic {
         min-height: 75vh;
