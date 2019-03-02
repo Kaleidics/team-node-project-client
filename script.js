@@ -724,7 +724,7 @@ function registerArrow() {
 // }
 
 function mobileNav() {
-    $('.content').on('click', (event) => {
+    $('.content, #loginBtn, #signUpBtn').on('click', (event) => {
         // console.log($('#icon'));
         $('.content').toggleClass('change');
         $('.mobileHide').toggle();
@@ -733,6 +733,7 @@ function mobileNav() {
         // $('#loginBtn').toggleClass('overlaySpacing');
         // $('#signUpBtn').toggleClass('overlaySpacing');
     });
+
 }
 
 
