@@ -729,6 +729,7 @@ function mobileNav() {
         $('#icon').toggleClass('change');
         $('.mobileHide').toggle();
         $('.nav').toggleClass('heightMobile');
+        $('#logoSpace').toggleClass('overlaySpacing');
         $('#loginBtn').toggleClass('overlaySpacing');
         $('#signUpBtn').toggleClass('overlaySpacing');
     });

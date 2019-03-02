@@ -553,7 +553,7 @@ fieldset {
     }
 
     .navbar li {
-        margin: 0;
+        margin-right: 0;
     }
 
     #logoSpace {
@@ -574,7 +574,7 @@ fieldset {
         display: flex;
     } */
     .overlaySpacing {
-        margin-bottom: 25px;
+        margin-bottom: 50px;
     }
     .main-pic {
         min-height: 75vh;
