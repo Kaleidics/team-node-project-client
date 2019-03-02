@@ -382,7 +382,33 @@ fieldset {
 
 
 
+.content{
+	/* display: inline-block; */
+	cursor: pointer;
+	/* position: relative; */
+	/* left: 50%; */
+	/* top: 50px; */
+}
 
+.icon1, .icon2, .icon3{
+	width: 30px;
+	height: 4px;
+	background: #666;
+	margin: 6px 0;
+	transition: .5s
+}
+
+.change .icon1{
+	transform: rotate(-45deg) translate(-9px,5px);
+}
+
+.change .icon2{
+	opacity: 0
+}
+
+.change .icon3{
+	transform: rotate(45deg) translate(-9px,-5px);
+}
 
 
 
@@ -514,6 +540,30 @@ fieldset {
     }
 }
 @media(max-width: 500px) {
+    .navbar {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* margin: 0 auto; */
+    text-align: center;
+    /* height: 100vh; */
+    margin: 0;
+    width: 100%;
+    }
+    #logoSpace {
+    padding: 0 5px 0 5px;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+    }
+    #loginBtn, #signUpBtn {
+        display: none;
+    }
+    .navbar li {
+        margin: 0;
+    }
     .main-pic {
         min-height: 75vh;
 

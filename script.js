@@ -719,6 +719,16 @@ function registerArrow() {
 //     var input = document.getElementById('search-input');
 //     var autocomplete = new google.maps.places.Autocomplete(input);
 // }
+// document.getElementById('icon').onclick = function () {
+//     this.classList.toggle('change')
+// }
+
+function mobileNav() {
+    $('#icon').on('click', (event) => {
+        console.log($('#icon'));
+        $('#icon').toggleClass('change');
+    });
+}
 
 
 function documentReady() {
@@ -749,6 +759,7 @@ function documentReady() {
     // registerUpdate();
     //
     // mapsSearch()
+    mobileNav();
 }
 
 $(documentReady);
