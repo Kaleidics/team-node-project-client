@@ -162,8 +162,13 @@ html, body {
 }
 
 .dark-section-inner {
+    border-bottom: 1px solid #fff;
     min-width: 50%;
     max-width: 50%;
+}
+
+#github-icon {
+    color: white;
 }
 /*//////////////////////////////////////////////////////////////*/
 
@@ -227,12 +232,13 @@ html, body {
     justify-content: center;
     text-align: right;
     color: #fff;
-    float: right;
+    /* float: right; */
     font-size: 24px;
     text-decoration: none;
     cursor: default;
-    padding: 8px;
+    padding: 25px;
     background: #4285f4;
+    align-items: center;
 }
 
 
@@ -241,6 +247,12 @@ html, body {
 }
 .cSpan {
     text-decoration: underline;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 .cSpan:hover {
     color: #192025;
@@ -335,6 +347,10 @@ fieldset {
     justify-content: center;
     border: none;
     flex-direction: column;
+}
+
+#search-input {
+    width: 50%;
 }
 /* /////////////////////////////////////////////////////////////////// */
 
@@ -679,6 +695,10 @@ fieldset {
     }
 }
 @media(max-width: 1024px) {
+
+    #search-input {
+    width: 80%;
+}
 .createMapStyle {
     border-radius: 3px;
     height: 350px;
