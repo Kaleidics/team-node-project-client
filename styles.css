@@ -206,6 +206,7 @@ i {
     padding: 20px;
 }
 .createMapStyle {
+    border-radius: 3px;
     height: 350px;
     display: flex;
     flex-direction: column;
@@ -250,8 +251,47 @@ i {
     margin: 20px;
 }
 
+.createFields {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    border: none;
+    text-align: center;
+    color: #666;
+}
+.createFields * {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.createFields label {
+    font-weight: bold;
+}
+.createFields input, .createFields select {
+    height: 20px;
+    border: 1px solid #666;
+    border-radius: 1px;
+}
+#descriptionCreate {
+    text-align: initial;
+    width: 66%;
+    height: 50px;
+}
+.createLegend {
+    color: #fff;
+    width: 100%;
+    background: #54BB9A;
+    padding: 0;
+    border-radius: 3px;
+    font-size: 24px;
+}
 /* fieldset of the modals */
 fieldset {
+    height: 100%;
+    padding: 0;
+    margin: 0;
     display: flex;
     justify-content: center;
     border: none;
@@ -271,10 +311,13 @@ fieldset {
     justify-content: center;
     /* margin: 0 auto; */
     width: 45%;
+    height: 390px;
 }
 
 .createTeamForm {
-    background: wheat;
+    border-radius: 3px;
+    width: 90%;
+    background: #fff;
 }
 
 .updateTeamForm {
@@ -558,11 +601,25 @@ fieldset {
     }
 }
 @media(max-width: 1024px) {
-
+.createMapStyle {
+    border-radius: 3px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: #f4f4f4;
+    padding: 20px;
+    width: 80%;
+}
     .content {
         display: block;
     }
-
+#post-container {
+    flex-direction: column;
+}
+.form-container {
+    margin-top: 50px;
+}
     .navbar {
     padding: 0;
     display: flex;
