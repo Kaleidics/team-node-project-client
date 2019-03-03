@@ -223,20 +223,26 @@ i {
 /* modal's close button */
 .closeBtn {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     text-align: right;
-    color: darkgray;
+    color: #fff;
     float: right;
-    font-size: 30px;
+    font-size: 24px;
     text-decoration: none;
     cursor: default;
+    padding: 8px;
+    background: #4285f4;
 }
 
+
+.authLabel {
+    margin: 0 auto;
+}
 .cSpan {
     text-decoration: underline;
 }
 .cSpan:hover {
-    color: #666;
+    color: #192025;
     text-decoration: none;
     cursor: pointer;
     text-decoration: none;
@@ -364,6 +370,29 @@ fieldset {
 
 
 
+.signup-fieldset, .login-fieldset{
+    text-align: center;
+}
+
+.signup-fieldset *, .login-fieldset *{
+    font-size: 20px;
+    margin: 0 auto;
+    padding: 5px;
+    text-align: center;
+}
+.form-login, .form-signup {
+    margin-top: 10px;
+    font-size: 16px;
+    padding: 0;
+    border: none;
+    background: #4285f4;
+    color: white;
+    border-radius: 3px;
+    width: 100px;
+    height: 33px;
+    cursor: pointer;
+    
+}
 
 /*//////////////////////////////////////////////////////////////////// */
 
@@ -389,6 +418,8 @@ fieldset {
     color: #e65722;
     
 }
+
+
 /* containers for profiles sections */
 #ownPosts {
     width: 90vw;
@@ -466,7 +497,7 @@ fieldset {
     position: relative;
     background-color: #f4f4f4;
     margin: 15vh auto;
-    padding: 20px;
+    /* padding: 20px; */
    
     box-shadow: 0 5px 8px 0 rgb(0, 0, 0), 0 7px 20px 0 rgb(0, 0, 0);
 }

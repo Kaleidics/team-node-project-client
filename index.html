@@ -47,13 +47,15 @@
 
         <div id="signup-Modal" class="modal">
             <div class="class">
-                <a href="#" class="closeBtn"><span class="cSpan">&times</span></a>
+                <a href="#" class="closeBtn initial "><span class="authLabel">Sign Up</span><span class="cSpan">&times</span></a>
                 <form id="signup-submit" class="modal-forms signup" role="form" method="POST">
-                    <fieldset>
-                        <legend>Sign Up</legend>
-                        <input id="usernameS" type="text" placeholder="Type here">
-                        <input id="passwordS" type="text" placeholder="********">
-                        <input type="submit" value="SignUp">
+                    <fieldset class="signup-fieldset">
+                        <legend></legend>
+                        <label for="username">Username</label>
+                        <input id="usernameS" type="text" placeholder="Type here" name="username">
+                        <label for="password">Password</label>
+                        <input id="passwordS" type="text" placeholder="********" name="password">
+                        <input class="form-signup" type="submit" value="SignUp">
                     </fieldset>
                 </form>
             </div>
@@ -61,13 +63,15 @@
 
         <div id="login-Modal" class="modal">
             <div class="class">
-                <a href="#" class="closeBtn"><span class="cSpan">&times</span></a>
+                <a href="#" class="closeBtn initial"><span class="authLabel">Login</span><span class="cSpan">&times</span></a>
                 <form id="login-submit" class="modal-forms login" role="form">
-                    <fieldset>
-                        <legend>Login</legend>
-                        <input id="usernameL" type="text" placeholder="Type here">
-                        <input id="passwordL" type="text" placeholder="********">
-                        <input type="submit" value="Login">
+                    <fieldset class="login-fieldset">
+                        <legend></legend>
+                        <label for="login-name">Username</label>
+                        <input id="usernameL" type="text" placeholder="Type here" name="login-name">
+                        <label for="login-pass">Password</label>
+                        <input id="passwordL" type="text" placeholder="********" name="login-pass">
+                        <input class="form-login" type="submit" value="Login">
                     </fieldset>
                 </form>
             </div>

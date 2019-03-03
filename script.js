@@ -725,7 +725,7 @@ function registerArrow() {
 // }
 
 function mobileNav() {
-    $('.content, #loginBtn, #signUpBtn').on('click', (event) => {
+    $('.content').on('click', (event) => {
         // console.log($('#icon'));
         // $('.mDelta').removeClass('mobileShow');
         $('.content').toggleClass('change');

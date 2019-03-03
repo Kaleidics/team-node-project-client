@@ -97,7 +97,7 @@ function modalizePostProfile(arr) {
     $('#post-container').append(`
     <div id="signup-Modal" class="modal unhide">
             <div class="class modal-content">
-                <a href="#" class="closeBtn"><span class="cSpan">&times</span></a>
+                <a href="#" class="closeBtn"><span class="cSpan">Go back</span></a>
                 <div id="${_id}" class="modal-pop">
                 <div>
                     <ul class="postUl">
@@ -235,7 +235,7 @@ function generateUpdateForm(id) {
     <div id="${id}" class="updateId">
     <div id="signup-Modal" class="modal unhide">
             <div class="class modal-content updateBox">
-                <a href="#" class="closeBtn"><span class="cSpan">&times</span></a>
+                <a href="#" class="closeBtn"><span class="cSpan">Go back</span></a>
                 <div class="modal-pop">
                 <form class="updateTeamForm" role="form">
                     <fieldset>
