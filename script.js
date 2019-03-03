@@ -560,146 +560,7 @@ function deletePost(id) {
     });
 }
 
-// function updateBtn() {
-//     $('#post-container').on('click', 'button.update', (event) => {
-//         console.log('clicked');
-//         const singlePost = $(event.target).parents('div.modal-pop').attr('id');
-//         // console.log(singlePost, event.target);
-//         generateUpdateForm(singlePost);
-//         // updatePost(singlePost);
-//         // $(event.target).closest('#signup-Modal').remove();
-//     });
-// }
 
-// function registerUpdate() {
-//     $('#post-container').on('submit', '.updateTeamForm', (event) => {
-//         event.preventDefault();
-//         console.log('attempted the put request');
-//         console.log($(event.target).parents('div.updateId'))
-//         const singlePost = $(event.target).parents('div.updateId').attr('id');
-//         callUpdate(singlePost);
-//     });
-// }
-
-// function callUpdate(id) {
-
-//     const localtoken = localStorage.getItem('localtoken');
-//     const title = $('#titleCreate').val();
-//     const membersLimit = $('#playerLimitCreate').val();
-//     const description = $('#descriptionCreate').val();
-//     const rules = $('#rulesCreate').val();
-//     // const lat = $('#latCreate').val();
-//     const long = $('#search-input').val();
-
-//     const base = 'http://localhost:8080/api/teams/update/';
-//     const url = base + id;
-//     console.log(url);
-
-//     const updatePost = {
-//         sport: sport,
-//         rules: rules,
-//         title: title,
-//         membersLimit: membersLimit,
-//         description: description,
-//         location: {
-//             lat: lat,
-//             long: long
-//         }
-//     }
-
-//     return fetch(url, {
-//         method: 'PUT',
-//         body: JSON.stringify(updatePost),
-//         headers: {
-//             'Content-Type': 'application/json',
-//             Authorization: `Bearer ${localtoken}`
-//         }
-//     })
-//         .then(response => {
-//             if (response.ok) {
-//                 console.log("updated");
-//                 // $(`div[id^=${}]`).remove();
-//                 return;
-//             }
-//             throw new Error(response.status);
-//         })
-//         .catch(err => {
-//             console.error(err);
-//         });
-// }
-
-// function generateUpdateForm(id) {
-
-//     $('#post-container').append(`
-//     <div id="${id}" class="updateId">
-//     <div id="signup-Modal" class="modal unhide">
-//             <div class="class modal-content">
-//                 <a href="#" class="closeBtn"><span class="cSpan">&times</span></a>
-//                 <div class="modal-pop">
-//                 <form class="updateTeamForm" role="form">
-//                     <fieldset>
-//                         <legend>Update this game</legend>
-//                         <label for="Title">Title</label>
-//                         <input id="titleCreate" type="text" name="Title" placeholder="Type here" required>
-//                         <label for="Rules">Rules</label>
-//                         <select name="Rules" id="rulesCreate">
-//                             <option value="Half-Court">Half-Court</option>
-//                             <option value="Full-Court">Full-Court</option>
-//                         </select>
-//                         <label for="PlayerLimit">Player Limit</label>
-//                         <input id="playerLimitCreate" type="number" name="PlayerLimit" min="1" max="99" required>
-//                         <label for="Description">Give us some details</label>
-//                         <input id="descriptionCreate" type="text" name="Description" placeholder="Type here" id="create-des" required>
-//                         <label for="search-input">Search for a court to play at</label>
-//                         <input id="search-input" type="text" name="search-input">
-//                         <input type="submit" value="Update">
-//                     </fieldset>
-//                 </form>
-//             </div>
-//             </div>
-//         </div>
-//     </div>
-//     `)
-//     var input = document.getElementById('search-input');
-//     var autocomplete = new google.maps.places.Autocomplete(input);
-// }
-
-// function updatePost(team, id) {
-//     const base = 'http://localhost:8080/api/teams/post/';
-//     const localtoken = localStorage.getItem('localtoken');
-//     const url = base + id;
-//     console.log(url);
-
-//     fetch(url, {
-//         headers: {
-//             'Content-Type': 'application/json',
-//             Authorization: `Bearer ${localtoken}`
-//         },
-//         method: 'PUT',
-//         body: JSON.stringify(team)
-//         })
-//         .then(response => {
-//             if (response.ok) {
-//                 return;
-//             }
-//             throw new Error(response.status);
-//         })
-//         .catch(err => {
-//             console.error(err);
-//         });
-// }
-// =========================================================//
-
-
-//==================== SANDBOX AREA =====================
-// function navBtn() {
-//     $('#profileBtn').on('click', (event) => {
-//         viewProfile();
-//         setTimeout(function () {
-//             window.location.href = './profile.html';
-//         }, 3000)
-//     })
-// }
 
 //==================== SCROLL CONTROLS =====================
 
@@ -714,28 +575,17 @@ function registerArrow() {
     });
 }
 
-// =========================================================//
-// =========================================================//
-// function mapsSearch() {
-//     var input = document.getElementById('search-input');
-//     var autocomplete = new google.maps.places.Autocomplete(input);
-// }
-// document.getElementById('icon').onclick = function () {
-//     this.classList.toggle('change')
-// }
+
 
 function mobileNav() {
     $('.content').on('click', (event) => {
-        // console.log($('#icon'));
-        // $('.mDelta').removeClass('mobileShow');
         $('.content').toggleClass('change');
-        // $('.mobileHide').toggle();
         $('.mDelta').toggle('mobileHide');
         $('.nav').toggleClass('heightMobile');
         $('.navbar li').toggleClass('overlaySpacing');
-        // $('#loginBtn').toggleClass('overlaySpacing');
-        // $('#signUpBtn').toggleClass('overlaySpacing');
+       
     });
+
     $('#loginBtn, #signUpBtn').on('click', (event) => {
         if($('.content').hasClass('change')){
             $('.content').toggleClass('change');
@@ -743,15 +593,21 @@ function mobileNav() {
             $('.nav').removeClass('heightMobile');
             $('.navbar li').toggleClass('overlaySpacing');
         }
-       
     })
-    if ($(window).width() > 1024) {
-        // $('.mDelta').addClass('mobileHide');
-        // $('.content').toggleClass('change');
-        // $('.mDelta').addClass('mobileShow');
-        // $('.nav').toggleClass('heightMobile');
-        // $('.navbar li').toggleClass('overlaySpacing');
-    }
+
+    
+    $(window).on('resize', function () {
+        var width = $(window).width();
+        if (width > 1024) {
+            console.log(width);
+            $('.mDelta').show();
+        }
+
+        if (width < 1024 && !($('.content').hasClass('change'))) {
+            console.log(width);
+            $('.mDelta').hide();
+        }
+    });
 
 }
 
