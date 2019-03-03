@@ -23,7 +23,7 @@ html, body {
     padding: 5px 0;
     margin: 0;
     z-index: 100;
-    background-color: #fff;
+    background-color: #F3F3F1;
 }
 
 .navbar {
@@ -73,9 +73,12 @@ html, body {
 }
 
 .main-pic {
-    background-color: grey;
-    background-image: url('./assets/pic30.jpg');
+    background-color: #192025;
+    /* background-image: url('./assets/pic30.jpg'); */
     min-height: 70vh;
+}
+.pic {
+    background-image: url('./assets/pic30.jpg');
 }
 /* inner div of the parallax pic */
 .pic-text {
@@ -91,7 +94,7 @@ html, body {
 
 /* arrow icon */
 i {
-    color: #fff;
+    color: #F1F4F5;
     margin-top: 30vh;
     cursor: pointer;
 }
@@ -136,6 +139,7 @@ i {
     margin: 20px;
     font-weight: bold;
 }
+
 /*///////////////////////////////////////////////////////////////////// */
 
 /* =====================  LANDING SECTIONS OF TEXT  =================== */
@@ -153,7 +157,7 @@ i {
 }
 
 .section-dark {
-    background-color: #282e34;
+    background-color: #323640;
     color: #ddd;
 }
 
@@ -201,7 +205,15 @@ i {
     background-color: #f4f4f4;
     padding: 20px;
 }
-
+.createMapStyle {
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: #f4f4f4;
+    padding: 20px;
+    width: 45%;
+}
 .postUl {
     
     list-style-type: none;
@@ -257,7 +269,8 @@ fieldset {
 .form-container {
     display: flex;
     justify-content: center;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    width: 45%;
 }
 
 .createTeamForm {
@@ -310,7 +323,7 @@ fieldset {
     
 }
 .post-item {
-   color: #fff;
+   color: #192025;
     display: flex;
     justify-content: center;
     /* background: rgba(0, 0, 0, 0.3); */
@@ -321,7 +334,7 @@ fieldset {
     border-radius: 10px;
     margin: 10px;
     cursor: pointer;
-    background: rgba(0 ,0 ,0, 0.5);
+    background: #EFEFF2;
     /* background: linear-gradient(245deg, rgba(244, 107, 69, 0.8), rgba(238, 168, 73, 0.9));
      */
     /* border: 2px solid rgba(0 ,0 ,0, 0.5); */
@@ -576,7 +589,9 @@ fieldset {
     .mobileHide {
         display: none;
     }
-
+    .mobileShow {
+        display: block;
+    }
     .heightMobile {
         height: 100vh;
     }

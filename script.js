@@ -726,6 +726,7 @@ function registerArrow() {
 function mobileNav() {
     $('.content, #loginBtn, #signUpBtn').on('click', (event) => {
         // console.log($('#icon'));
+        // $('.mDelta').removeClass('mobileShow');
         $('.content').toggleClass('change');
         $('.mobileHide').toggle();
         $('.nav').toggleClass('heightMobile');
@@ -733,6 +734,14 @@ function mobileNav() {
         // $('#loginBtn').toggleClass('overlaySpacing');
         // $('#signUpBtn').toggleClass('overlaySpacing');
     });
+
+    if ($(window).width() > 1024) {
+        // $('.content').toggleClass('change');
+        // $('.mobileHide').toggle();
+        // $('.mDelta').addClass('mobileShow');
+        // $('.nav').toggleClass('heightMobile');
+        // $('.navbar li').toggleClass('overlaySpacing');
+    }
 
 }
 
