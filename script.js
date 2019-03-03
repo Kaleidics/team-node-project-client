@@ -737,13 +737,16 @@ function mobileNav() {
         // $('#signUpBtn').toggleClass('overlaySpacing');
     });
     $('#loginBtn, #signUpBtn').on('click', (event) => {
-        $('.content').toggleClass('change');
-        $('.mDelta').toggle('mobileHide');
-        
-        $('.nav').removeClass('heightMobile');
-        $('.navbar li').toggleClass('overlaySpacing');
+        if($('.content').hasClass('change')){
+            $('.content').toggleClass('change');
+            $('.mDelta').toggle('mobileHide');
+            $('.nav').removeClass('heightMobile');
+            $('.navbar li').toggleClass('overlaySpacing');
+        }
+       
     })
     if ($(window).width() > 1024) {
+        // $('.mDelta').addClass('mobileHide');
         // $('.content').toggleClass('change');
         // $('.mDelta').addClass('mobileShow');
         // $('.nav').toggleClass('heightMobile');

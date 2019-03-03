@@ -138,7 +138,7 @@ function modalizePostProfile(arr) {
     }
     else {
         $('.modal-content').niceScroll({
-            cursorcolor: "#ffa500",
+            cursorcolor: "#4285f4",
             cursoropacitymin: 0.8,
             background: "#bbb",
             cursorborder: "0",
