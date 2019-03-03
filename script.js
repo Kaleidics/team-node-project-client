@@ -384,7 +384,6 @@ function documentReady() {
     pseudoState();
     logout();
     //SCROLL CONTROLS
-    registerArrow();
 //MODAL CONTROLS
     toggleOnSignUp();
     toggleOffSignUp();
