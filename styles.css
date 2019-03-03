@@ -718,9 +718,7 @@ fieldset {
     display: flex;
     width: 95%;
     }
-    .mobileHide {
-        display: none;
-    }
+    
     .mobileShow {
         display: block;
     }
@@ -756,7 +754,9 @@ fieldset {
     .pic-text {
         top:35%;
     }
-
+.mobileHide {
+        display: none;
+    }
 .modal-content {
     overflow-y: scroll;
     display: flex;
