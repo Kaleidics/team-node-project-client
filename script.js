@@ -333,16 +333,16 @@ function deletePost(id) {
 
 //==================== SCROLL CONTROLS =====================
 
-function registerArrow() {
-    $(".fas").on("click", () => {
-        $("html").animate({
-            scrollTop: 2000
-        }, 500)
-    });
-    $(window).on('scroll', () => {
-        $('.fas').addClass('hidden');
-    });
-}
+// function registerArrow() {
+//     $(".fas").on("click", () => {
+//         $("html").animate({
+//             scrollTop: 2000
+//         }, 500)
+//     });
+//     $(window).on('scroll', () => {
+//         $('.fas').addClass('hidden');
+//     });
+// }
 
 
 //Spaghetti to control navbar responsiveness
