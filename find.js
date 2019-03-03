@@ -84,7 +84,6 @@ function modalizePostFind(arr) {
                         <li class="postDes">Description: <p>${description}</p></li>
                         <li class="postAdd">Location: <address>${address}</address></li>
                         <div id='map' class="map-style"></div>
-                        <li class="postButton"><button class="joinBtn">Join</button></li>
                     </ul>
                 </div>
             </div>

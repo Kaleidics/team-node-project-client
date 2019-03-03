@@ -250,7 +250,32 @@ i {
 .modal-forms {
     margin: 20px;
 }
+.update {
+    border: none;
+    background: #4285f4;
+    color: white;
+    border-radius: 3px;
+    width: 100px;
+    height: 33px;
+    cursor: pointer;
+}
+.update:hover, .delete:hover {
+    background: #111;
+}
+.options-row {
+    display: flex;
+    justify-content: space-between;
+}
 
+.delete {
+    border: none;
+    background: #ed5e68;
+    color: white;
+    border-radius: 3px;
+    width: 100px;
+    height: 33px;
+    cursor: pointer;
+}
 .createFields {
     height: 100%;
     padding: 0;
@@ -269,10 +294,17 @@ i {
 .createFields label {
     font-weight: bold;
 }
-.createFields input, .createFields select {
-    height: 20px;
-    border: 1px solid #666;
-    border-radius: 1px;
+
+
+.createSubmit {
+    margin-top: 10px;
+    border: none;
+    background: #54BB9A;
+    color: white;
+    border-radius: 3px;
+    width: 100px;
+    height: 33px;
+    cursor: pointer;
 }
 #descriptionCreate {
     text-align: initial;
@@ -351,6 +383,7 @@ fieldset {
 
 .createdGames, .joinedGames {
     /* font-family: spray; */
+    text-align: center;
     text-decoration: underline;
     text-decoration-color: #111;
     color: #e65722;
@@ -395,8 +428,18 @@ fieldset {
     height: 100%;
     list-style-type: none;
     padding: 0;
+    margin: 0;
+}
+.post-item-list ul h3 {
+    margin: 0;
+    background: orange;
+    border-radius: 5px;
+    width: 100%;
 }
 
+.post-item-list {
+    width: 100%;
+}
 
 /*//////////////////////////////////////////////////////////////////// */
 
@@ -618,6 +661,7 @@ fieldset {
     flex-direction: column;
 }
 .form-container {
+    width: 100%;
     margin-top: 50px;
 }
     .navbar {

@@ -109,8 +109,7 @@ function modalizePostProfile(arr) {
                         <li>Description: <p>${description}</p></li>
                         <li>Location: <address>${address}</address></li>
                         <div id='map' class="map-style"></div>
-                        <li><button class="update">Update</button></li>
-                        <li><button class="delete">Delete</button></li>
+                        <li class="options-row"><button class="update">Update</button><button class="delete">Delete</button></li>
                     </ul>
                 </div>
             </div>
@@ -235,7 +234,7 @@ function generateUpdateForm(id) {
     $('#post-container').append(`
     <div id="${id}" class="updateId">
     <div id="signup-Modal" class="modal unhide">
-            <div class="class modal-content">
+            <div class="class modal-content updateBox">
                 <a href="#" class="closeBtn"><span class="cSpan">&times</span></a>
                 <div class="modal-pop">
                 <form class="updateTeamForm" role="form">
@@ -265,6 +264,7 @@ function generateUpdateForm(id) {
     var input = document.getElementById('search-input');
     var autocomplete = new google.maps.places.Autocomplete(input);
 }
+
 
 function documentReady() {
     viewProfile();

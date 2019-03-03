@@ -19,7 +19,7 @@ function logout() {
         console.log('logged out');
         localStorage.removeItem('localtoken');
         localStorage.removeItem('currentUser');
-        location.reload();
+        location.href = './index.html'
     })
 }
 // =========================================================//
@@ -530,6 +530,7 @@ function deleteBtn() {
         console.log(singlePost, event.target);
         deletePost(singlePost);
         $(event.target).closest('#signup-Modal').remove();
+        $('body').removeClass('preventScroll');
     });
 }
 
@@ -737,7 +738,6 @@ function mobileNav() {
 
     if ($(window).width() > 1024) {
         // $('.content').toggleClass('change');
-        // $('.mobileHide').toggle();
         // $('.mDelta').addClass('mobileShow');
         // $('.nav').toggleClass('heightMobile');
         // $('.navbar li').toggleClass('overlaySpacing');
