@@ -334,6 +334,7 @@ fieldset {
     display: flex;
     justify-content: center;
     border: none;
+    flex-direction: column;
 }
 /* /////////////////////////////////////////////////////////////////// */
 
