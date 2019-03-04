@@ -292,6 +292,43 @@ function generateUpdateForm(id) {
 }
 
 
+function deleteBtn() {
+    $('#post-container').on('click', 'button.delete', (event) => {
+        console.log('clicked');
+        const singlePost = $(event.target).parents('div.modal-pop').attr('id');
+        console.log(singlePost, event.target);
+        deletePost(singlePost);
+        $(event.target).closest('#signup-Modal').remove();
+        $('body').removeClass('preventScroll');
+    });
+}
+
+function deletePost(id) {
+    const base = 'http://localhost:8080/api/teams/post/';
+    const localtoken = localStorage.getItem('localtoken');
+    const url = base + id;
+    console.log(url);
+
+    fetch(url, {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localtoken}`
+        },
+        method: 'DELETE'
+    })
+        .then(response => {
+            if (response.ok) {
+                console.log("Deleted");
+                $(`div[id^=${id}]`).remove();
+                return;
+            }
+            throw new Error(response.status);
+        })
+        .catch(err => {
+            console.error(err);
+        });
+}
+
 function documentReady() {
     viewProfile();
     popPost();
