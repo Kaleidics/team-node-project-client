@@ -5,10 +5,7 @@ const sport = 'basketball';//originally meant to be for multiple sports, now its
 // ==================  SIMULATE STATES =====================
 //loads different navbars depending if jwt is in local storage
 function pseudoState() {
-    console.log('using pseudostate');
-    console.log('level 1 trigger');
     if (localStorage.getItem('localtoken')) {
-        console.log('triggered');
         $('#post-nav').addClass('unhidden');
         $('#pre-nav').addClass('hidden');
     }
@@ -16,7 +13,6 @@ function pseudoState() {
 
 function logout() {
     $('#logoutBtn').on('click', (event) => {
-        console.log('logged out');
         localStorage.removeItem('localtoken');
         localStorage.removeItem('currentUser');
         location.href = './index.html'
@@ -57,7 +53,6 @@ function toggleOffLogin() {
 function submitSignUp() {
     $('#signup-submit').on('submit', (event) => {
         event.preventDefault();
-        console.log('clicked');
         SignUp();
     });
 }
@@ -65,7 +60,6 @@ function submitSignUp() {
 function submitLogin() {
     $('#login-submit').on('submit', (event) => {
         event.preventDefault();
-        console.log('clicked');
         login();
     });
 }
@@ -92,7 +86,6 @@ function SignUp() {
         }
     })
     .then(response => {
-        console.log('signup triggered');
         //if response success trigger login modal
         if (response.status === 201){
             $('#signup-Modal').removeClass('unhide');
@@ -102,7 +95,6 @@ function SignUp() {
         else {
             return response.json()
             .then(response => {
-                console.log(response);
                 alert(`${response.location} ${response.message}`);
             })
             .catch(err => console.log(err));
@@ -132,10 +124,8 @@ function login() {
     })
     .then(res => res.json())
     .then(response => {
-        console.log('login success', response);
         const authToken = response.authtoken;
         const userid = response.userid;
-        console.log(authToken);
         //store jwt
         localStorage.setItem('localtoken', authToken);
         localStorage.setItem('currentUser', userid);
@@ -145,12 +135,10 @@ function login() {
             $('#login-Modal').removeClass('unhide');
             $('#post-nav').removeClass('hidden');
             $('#pre-nav').addClass('hidden');
-            console.log('logged in');
         }
     })
     .catch(err => {
-        console.log(err);
-        alert('Username or password do not match.')
+        alert('Username or password do not match.');
     });
 }
 // =========================================================//
@@ -176,7 +164,6 @@ function registerProfile() {
 //Remove the appended modal from modalizePost functions -- CHANGED TO MULTI PURPOSE CLOSE BTN NEEDS REFACTOR
 function profileCloseBtn() {
     $('#post-container').on('click', '.cSpan', (event) => {
-        console.log('clicked profile close');
         $(event.target).closest('#signup-Modal').remove();
         $('body').removeClass('preventScroll');
     });
@@ -186,9 +173,7 @@ function profileCloseBtn() {
 
 function popPost2() {
     $('#view-container').on('click', '.findView', (event) => {
-        console.log('view container');
         const singlePost = $(event.target).closest('div.findView').attr('id');
-        console.log(singlePost);
         $('body').addClass('preventScroll');
         viewSinglePost2(singlePost);
     });
@@ -221,12 +206,10 @@ function mobileNav() {
     $(window).on('resize', function () {
         var width = $(window).width();
         if (width > 1024) {
-            console.log(width);
             $('.mDelta').show();
         }
 
         if (width < 1024 && !($('.content').hasClass('change'))) {
-            console.log(width);
             $('.mDelta').hide();
         }
     });

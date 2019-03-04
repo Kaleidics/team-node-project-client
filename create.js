@@ -4,13 +4,11 @@
 function registerCreate() {
     $('.createTeamForm').on('submit', (event) => {
         event.preventDefault();
-        console.log('attempted the post request');
         if (localStorage.getItem('localtoken') === null) {
             alert('Login to make a post!');
             return;
         }
         else {
-            console.log('logged in, attempting to post server');
             createTeam();
         }
     });
@@ -26,11 +24,9 @@ function createTeam() {
     const description = $('#descriptionCreate').val();
     const rules = $('#rulesCreate').val();
     const address = $('#search-input').val();
-    console.log('attempted new post', address);
 
 
     const googleQuery = address.replace(/\s/g, '+');
-    console.log(googleQuery);
     const geocodeBase = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
     const geoKey = '&key=AIzaSyCVE0EVrFMwT7F0tBXuStCz7mpfmrO_Hd4';
     const geocodeUrl = geocodeBase + googleQuery + geoKey;
@@ -64,7 +60,6 @@ function createTeam() {
             })
                 .then(res => res.json())
                 .then(response => {
-                    console.log(response);
                     $('.createLegend').html('Success. See your post in Find Game');
                     $('.clear').val('');
                 })
