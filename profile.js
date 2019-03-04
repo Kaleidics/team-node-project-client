@@ -11,7 +11,6 @@ function viewProfile() {
     const localtoken = localStorage.getItem('localtoken');
     const currentUserId = localStorage.getItem('currentUser');
     const url = base + currentUserId;
-    console.log(url);
     return fetch(url, {
         method: 'GET',
         headers: {
@@ -21,8 +20,6 @@ function viewProfile() {
     })
         .then(res => res.json())
         .then(response => {
-            console.log('find profile triggered');
-            console.log(response);
             populateProfile(response);
         })
         .catch(err => console.log(err));
@@ -60,7 +57,6 @@ function viewProfile() {
     const localtoken = localStorage.getItem('localtoken');
     const currentUserId = localStorage.getItem('currentUser');
     const url = base + currentUserId;
-    console.log(url);
     return fetch(url, {
         method: 'GET',
         headers: {
@@ -70,8 +66,6 @@ function viewProfile() {
     })
         .then(res => res.json())
         .then(response => {
-            console.log('find profile triggered');
-            console.log(response);
             populateProfile(response);
         })
         .catch(err => console.log(err));
@@ -91,7 +85,6 @@ function viewSinglePost(postId) {
     const base = 'http://localhost:8080/api/teams/post/';
     const localtoken = localStorage.getItem('localtoken');
     const url = base + postId;
-    console.log(url);
     return fetch(url, {
         method: 'GET',
         headers: {
@@ -101,8 +94,6 @@ function viewSinglePost(postId) {
     })
         .then(res => res.json())
         .then(response => {
-            console.log('find triggered');
-            console.log(response);
             modalizePostProfile(response);
         })
         .catch(err => console.log(err));
@@ -113,9 +104,7 @@ function modalizePostProfile(arr) {
     const { title, sport, members, membersLimit, description, _id, address, rules } = arr;
     let { creator, joiners } = arr.members;
     const { lat, long } = arr.location;
-    console.log('creator is:', creator);
     creator = creator.username;
-    console.log('creator.username is:', creator);
 
     $('#post-container').append(`
     <div id="signup-Modal" class="modal unhide">
@@ -175,12 +164,8 @@ function modalizePostProfile(arr) {
 
 function updateBtn() {
     $('#post-container').on('click', 'button.update', (event) => {
-        console.log('clicked');
         const singlePost = $(event.target).parents('div.modal-pop').attr('id');
-        // console.log(singlePost, event.target);
         generateUpdateForm(singlePost);
-        // updatePost(singlePost);
-        // $(event.target).closest('#signup-Modal').remove();
     });
 }
 
@@ -188,8 +173,6 @@ function updateBtn() {
 function registerUpdate() {
     $('#post-container').on('submit', '.updateTeamForm', (event) => {
         event.preventDefault();
-        console.log('attempted the put request');
-        console.log($(event.target).parents('div.updateId'))
         const singlePost = $(event.target).parents('div.updateId').attr('id');
         callUpdate(singlePost);
     });
@@ -199,7 +182,6 @@ function callUpdate(id) {
 
     const base = 'http://localhost:8080/api/teams/update/';
     const url = base + id;
-    console.log(url);
 
     const localtoken = localStorage.getItem('localtoken');
     const title = $('#titleCreate').val();
@@ -207,11 +189,9 @@ function callUpdate(id) {
     const description = $('#descriptionCreate').val();
     const rules = $('#rulesCreate').val();
     const address = $('#search-input').val();
-    console.log('attempted new post', address);
 
 
     const googleQuery = address.replace(/\s/g, '+');
-    console.log(googleQuery);
     const geocodeBase = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
     const geoKey = '&key=AIzaSyCVE0EVrFMwT7F0tBXuStCz7mpfmrO_Hd4';
     const geocodeUrl = geocodeBase + googleQuery + geoKey;
@@ -245,9 +225,7 @@ function callUpdate(id) {
             })
             .then(res => res.json())
             .then(response => {
-                    console.log('should have worked', response);
                     $('.updateSpan').html('Updated. Go back.')
-
             })
             .catch(err => console.log(err));
         })
@@ -294,9 +272,7 @@ function generateUpdateForm(id) {
 
 function deleteBtn() {
     $('#post-container').on('click', 'button.delete', (event) => {
-        console.log('clicked');
         const singlePost = $(event.target).parents('div.modal-pop').attr('id');
-        console.log(singlePost, event.target);
         deletePost(singlePost);
         $(event.target).closest('#signup-Modal').remove();
         $('body').removeClass('preventScroll');
@@ -307,7 +283,6 @@ function deletePost(id) {
     const base = 'http://localhost:8080/api/teams/post/';
     const localtoken = localStorage.getItem('localtoken');
     const url = base + id;
-    console.log(url);
 
     fetch(url, {
         headers: {
@@ -318,7 +293,6 @@ function deletePost(id) {
     })
         .then(response => {
             if (response.ok) {
-                console.log("Deleted");
                 $(`div[id^=${id}]`).remove();
                 return;
             }
