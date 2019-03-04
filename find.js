@@ -1,5 +1,6 @@
 'use strict';
 
+//AJAX function to view all posts, trigged by click event on nav button Find a Game
 function viewPosts() {
     const url = 'http://localhost:8080/api/teams/';
     console.log('triggered viewposts');
@@ -12,6 +13,7 @@ function viewPosts() {
         })
         .catch(err => console.log(err));
 }
+
 
 function populatePosts(arr) {
     let items = ``;

@@ -174,22 +174,8 @@ function registerProfile() {
 //============================================================//
 
 //==================  TEAM ROUTES AJAX  =========================
-//AJAX function to create a team, triggered by form submit on Create a Game view
 
 
-//AJAX function to view all posts, trigged by click event on nav button Find a Game
-function viewPosts() {
-    const url = 'http://localhost:8080/api/teams/';
-
-    return fetch(url)
-    .then(res => res.json())
-    .then(response => {
-        console.log('find triggered');
-        console.log(response);
-        populatePosts(response);
-    })
-    .catch(err => console.log(err));
-}
 
 //AJAX function to view posts owned by Logged in User, and posts joined by Logged in user, triggered by click event on nav button My Profile
 function viewProfile() {
@@ -319,7 +305,6 @@ function documentReady() {
 //SIMULATE STATES
     pseudoState();
     logout();
-    //SCROLL CONTROLS
 //MODAL CONTROLS
     toggleOnSignUp();
     toggleOffSignUp();
