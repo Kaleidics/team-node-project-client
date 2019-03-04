@@ -255,7 +255,7 @@ function generateUpdateForm(id) {
                         <input id="descriptionCreate" type="text" name="Description" placeholder="Type here" id="create-des" required>
                         <label for="search-input">Search for a court to play at</label>
                         <input id="search-input" type="text" name="search-input">
-                        <input type="submit" value="Update">
+                        <input class="update" type="submit" value="Update">
                     </fieldset>
                 </form>
             </div>
@@ -265,6 +265,7 @@ function generateUpdateForm(id) {
     `)
     var input = document.getElementById('search-input');
     var autocomplete = new google.maps.places.Autocomplete(input);
+    
 }
 
 

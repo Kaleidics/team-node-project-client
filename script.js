@@ -175,61 +175,7 @@ function registerProfile() {
 
 //==================  TEAM ROUTES AJAX  =========================
 //AJAX function to create a team, triggered by form submit on Create a Game view
-function createTeam() {
-    const url = 'http://localhost:8080/api/teams/';
 
-    const localtoken = localStorage.getItem('localtoken');
-    const title = $('#titleCreate').val();
-    const membersLimit = $('#playerLimitCreate').val();
-    const description = $('#descriptionCreate').val();
-    const rules = $('#rulesCreate').val();
-    const address = $('#search-input').val();
-    console.log('attempted new post', address);
-
-
-    const googleQuery = address.replace(/\s/g, '+');
-    console.log(googleQuery);
-    const geocodeBase = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
-    const geoKey = '&key=AIzaSyCVE0EVrFMwT7F0tBXuStCz7mpfmrO_Hd4';
-    const geocodeUrl = geocodeBase + googleQuery + geoKey;
-    
-    fetch(geocodeUrl)
-        .then(res => res.json())
-        .then(response => {
-            const { lat, lng } = response.results[0].geometry.location;
-            const newPost = {
-                sport: sport,
-                rules: rules,
-                title: title,
-                membersLimit: membersLimit,
-                description: description,
-                address: address,
-                location: {
-                    lat: lat,
-                    long: lng
-                }
-            }
-            return newPost;
-        })
-        .then(response =>{
-            return fetch(url, {
-                method: 'POST',
-                body: JSON.stringify(response),
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${localtoken}`
-                }
-            })
-                .then(res => res.json())
-                .then(response => {
-                    console.log(response);
-                    $('.createLegend').html('Success. See your post in Find Game');
-                })
-                .catch(err => console.log(err));
-        })
-        .catch(err => console.log(err));
-        
-}
 
 //AJAX function to view all posts, trigged by click event on nav button Find a Game
 function viewPosts() {
