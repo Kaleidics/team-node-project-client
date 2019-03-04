@@ -1,5 +1,6 @@
 'use strict';
 
+//event listener for submit button
 function registerCreate() {
     $('.createTeamForm').on('submit', (event) => {
         event.preventDefault();
@@ -15,6 +16,7 @@ function registerCreate() {
     });
 }
 
+//Creates a new post
 function createTeam() {
     const url = 'http://localhost:8080/api/teams/';
 
@@ -72,6 +74,7 @@ function createTeam() {
 
 }
 
+//Google Maps API generates map
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 40.7009, lng: -73.9880 },

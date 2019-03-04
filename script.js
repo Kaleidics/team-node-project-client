@@ -1,5 +1,5 @@
 'use strict'
-const sport = 'basketball';
+const sport = 'basketball';//originally meant to be for multiple sports, now its only basketball, used to fill deprecated form field, will remove later
 
 
 // ==================  SIMULATE STATES =====================
@@ -173,13 +173,6 @@ function registerProfile() {
 
 //============================================================//
 
-
-
-
- 
-
-
-
 //Remove the appended modal from modalizePost functions -- CHANGED TO MULTI PURPOSE CLOSE BTN NEEDS REFACTOR
 function profileCloseBtn() {
     $('#post-container').on('click', '.cSpan', (event) => {
@@ -200,44 +193,6 @@ function popPost2() {
         viewSinglePost2(singlePost);
     });
 }
-
-function deleteBtn() {
-    $('#post-container').on('click', 'button.delete', (event) => {
-        console.log('clicked');
-        const singlePost = $(event.target).parents('div.modal-pop').attr('id');
-        console.log(singlePost, event.target);
-        deletePost(singlePost);
-        $(event.target).closest('#signup-Modal').remove();
-        $('body').removeClass('preventScroll');
-    });
-}
-
-function deletePost(id) {
-    const base = 'http://localhost:8080/api/teams/post/';
-    const localtoken = localStorage.getItem('localtoken');
-    const url = base + id;
-    console.log(url);
-
-    fetch(url, {
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${localtoken}`
-        },
-        method: 'DELETE'
-    })
-    .then(response => {
-        if (response.ok) {
-            console.log("Deleted");
-            $(`div[id^=${id}]`).remove();
-            return;
-        }
-        throw new Error(response.status);
-    })
-    .catch(err => {
-        console.error(err);
-    });
-}
-
 
 
 //==================== SCROLL CONTROLS =====================
