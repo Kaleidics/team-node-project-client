@@ -2,7 +2,7 @@
 
 //AJAX function to view all posts, trigged by click event on nav button Find a Game
 function viewPosts() {
-    const url = 'http://localhost:8080/api/teams/';
+    const url = 'https://immense-brushlands-16839.herokuapp.com/api/teams/';
     return fetch(url)
         .then(res => res.json())
         .then(response => {
@@ -21,7 +21,7 @@ function populatePosts(arr) {
         const { lat, long } = arr[i].location;
 
         items = items.concat(`
-            <div id="${_id}" class="findView post-item">
+            <div id="${_id}" class="findView post-item" aria-controls="self-expanded-post">
                 <div class="post-item-list">
                     <ul>
                         <li class="preTitle"><h3>${title}</h3></li>
@@ -38,7 +38,7 @@ function populatePosts(arr) {
 }
 
 function viewSinglePost2(postId) {
-    const base = 'http://localhost:8080/api/teams/post/';
+    const base = 'https://immense-brushlands-16839.herokuapp.com/api/teams/post/';
     const localtoken = localStorage.getItem('localtoken');
     const url = base + postId;
     return fetch(url, {
@@ -62,9 +62,9 @@ function modalizePostFind(arr) {
     creator = creator.username;
 
     $('#post-container').append(`
-    <div id="signup-Modal" class="modal unhide">
+    <div id="signup-Modal" class="modal unhide" role="self-expanded-post">
             <div class="class modal-content">
-                <a href="#" class="closeBtn"><span class="cSpan">Go back</span></a>
+                <a href="#" class="closeBtn" aria-controls="self-expanded-post"><span class="cSpan">Go back</span></a>
                 <div id="${_id}">
                 <div>
                     <ul class="postUl">
@@ -101,7 +101,7 @@ function modalizePostFind(arr) {
         || navigator.userAgent.match(/BlackBerry/i)
         || navigator.userAgent.match(/Windows Phone/i)
     ) {
-        console.log('this is mobile');
+       
     }
     else {
         $('.modal-content').niceScroll({

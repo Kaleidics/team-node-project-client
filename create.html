@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Node</title>
-    <meta name="description" content="Find pickup basketball games now">
+    <meta name="description" content="Find pickup basketball games now!">
     <link href="https://fonts.googleapis.com/css?family=Lato|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -17,7 +17,7 @@
     <header id="pre-nav" role="banner" class="nav">
         <ul class="navbar">
             <li class="logoSpace"><a class='logo' href="./index.html">F<span class="orange">C</span>F</a>
-                <div class="content" id=icon>
+                <div class="content" id="icon">
                     <div class="icon1"></div>
                     <div class="icon2"></div>
                     <div class="icon3"></div>
@@ -30,7 +30,7 @@
     <header id="post-nav" role="banner" class="nav hidden">
         <ul class="navbar">
             <li class="logoSpace"><a class='logo' href="./index.html">F<span class="orange">C</span>F</a>
-                <div class="content" id=icon>
+                <div class="content" id="icon2">
                     <div class="icon1"></div>
                     <div class="icon2"></div>
                     <div class="icon3"></div>
@@ -74,43 +74,42 @@
         </div>
     </section>
 
-    <main>
-
+    <main role="main">
         <!-- CREATE A POST VIEW -->
         <div id='post-container' class="main-pic">
             <div class="form-container">
                 <form class="createTeamForm" role="form">
                     <fieldset class="createFields">
-                        <legend class="createLegend">Create a Game</legend>
-                        <label for="Title">Title</label>
+                        <legend class="createLegend" role="form">Create a Game</legend>
+                        <label for="titleCreate">Title</label>
                         <input id="titleCreate" class="clear" type="text" name="Title" placeholder="Type here" required>
-                        <label for="Rules">Rules</label>
+                        <label for="rulesCreate">Rules</label>
                         <select name="Rules" id="rulesCreate">
                             <option value="Half-Court">Half-Court</option>
                             <option value="Full-Court">Full-Court</option>
                         </select>
-                        <label for="PlayerLimit">Player Limit</label>
+                        <label for="playerLimitCreate">Player Limit</label>
                         <input id="playerLimitCreate" class="clear" type="number" name="PlayerLimit" min="1" max="99" required>
-                        <label for="Description">Description</label>
+                        <label for="descriptionCreate">Description</label>
                         <input id="descriptionCreate" class="clear" type="text" name="Description" placeholder="Type here"
                             id="create-des" maxlength="100" required>
-                        <label for="search">Location</label>
-                        <input id="search-input" class="clear" type="text" name='search' required>
+                        <label for="search-input">Location</label>
+                        <input id="search-input" class="clear" type="text" name='search' aria-controls="map" required>
                         <input class="createSubmit" class="clear" type="submit">
                     </fieldset>
                 </form>
             </div>
-            <div id="map" class="map-style createMapStyle"></div>
+            <div id="map" class="map-style createMapStyle" role="application"></div>
         </div>
 
-        <section class="section section-light">
+        <section class="section section-light" role="region">
             <div>
                 <h2>About</h2>
                 <p>Full Court Flex was made to help players easily find a game of pickup basketball.</p>
             </div>
         </section>
 
-        <section class="section section-dark">
+        <section class="section section-dark" role="region">
             <div class="dark-section-inner">
                 <i class="fas fa-3x fa-basketball-ball"></i>
                 <h2>Create a Game</h2>
@@ -128,10 +127,10 @@
                 <p>Search filters coming soon.</p>
             </div>
         </section>
-        <footer>
-            <section class="section section-dark">
+        <footer role="contentinfo">
+            <section class="section section-dark" role="region">
                 <div class="dark-section-inner">
-                    <a href='https://github.com/Kaleidics/team-node-project'><i id="github-icon" class="fab fa-2x fa-github"></i></a>
+                    <a href='https://github.com/Kaleidics/team-node-project' aria-label="github code"><i id="github-icon" class="fab fa-2x fa-github"></i></a>
                     <p>Full Court Flex will not be responsible for users that get dunked on and or the actions of other
                         users.
                     </p>
